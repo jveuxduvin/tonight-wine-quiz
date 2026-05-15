@@ -17,3 +17,4 @@ npm run build
 ```
 
 The app uses a local hardcoded wine dataset and no backend.
+Tiny test change for branch protection.
