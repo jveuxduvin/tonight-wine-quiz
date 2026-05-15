@@ -29,6 +29,29 @@ function closenessScore(value: number, target: number): number {
   return Math.max(0, 3 - Math.abs(value - target));
 }
 
+function sweetnessPreferenceScore(wine: Wine, dryness: DrynessPreference): number {
+  if (dryness === "none") {
+    return 0;
+  }
+
+  const target = sweetnessTargets[dryness];
+  let score = closenessScore(wine.sweetness, target);
+
+  if (dryness === "sweet") {
+    score += wine.sweetness >= 4 ? 4 : -4;
+  }
+
+  if (dryness === "dry" && wine.sweetness >= 4) {
+    score -= 4;
+  }
+
+  if (dryness === "offDry" && wine.sweetness >= 2 && wine.sweetness <= 4) {
+    score += 1.5;
+  }
+
+  return score;
+}
+
 function crowdScore(adventurousness: number, crowd: CrowdMode): number {
   if (crowdTargets[crowd].includes(adventurousness)) {
     return 3;
@@ -54,9 +77,7 @@ export function scoreWine(wine: Wine, answers: Required<QuizAnswers>): ScoredWin
     score += 3;
   }
 
-  if (answers.dryness !== "none") {
-    score += closenessScore(wine.sweetness, sweetnessTargets[answers.dryness]);
-  }
+  score += sweetnessPreferenceScore(wine, answers.dryness);
 
   if (answers.body !== "none") {
     score += closenessScore(wine.body, bodyTargets[answers.body]);
