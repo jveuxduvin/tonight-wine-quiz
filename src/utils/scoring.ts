@@ -88,7 +88,12 @@ export function getTopWineRecommendations(
   answers: Required<QuizAnswers>,
   limit = 3,
 ): ScoredWine[] {
-  return wines
+  const eligibleWines =
+    answers.category === "surprise"
+      ? wines
+      : wines.filter((wine) => wine.category === answers.category);
+
+  return eligibleWines
     .map((wine) => scoreWine(wine, answers))
     .sort((a, b) => b.score - a.score || a.name.localeCompare(b.name))
     .slice(0, limit);
