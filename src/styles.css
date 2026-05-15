@@ -1,0 +1,144 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: light;
+  font-family: Inter, ui-sans-serif, system-ui, sans-serif;
+  background: #fff6df;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+}
+
+button {
+  font: inherit;
+}
+
+@layer components {
+  .sketch-card {
+    border: 2px solid theme("colors.ink");
+    border-radius: 1.6rem 1.25rem 1.8rem 1.35rem;
+    position: relative;
+  }
+
+  .sketch-card::before {
+    content: "";
+    pointer-events: none;
+    position: absolute;
+    inset: 5px -5px -5px 5px;
+    z-index: -1;
+    border: 2px dashed rgba(48, 39, 31, 0.24);
+    border-radius: 1.7rem 1.2rem 1.65rem 1.55rem;
+  }
+
+  .sketch-button {
+    align-items: center;
+    border: 2px solid theme("colors.ink");
+    border-radius: 999px;
+    box-shadow: 3px 4px 0 rgba(48, 39, 31, 0.17);
+    display: inline-flex;
+    font-family: theme("fontFamily.sketch");
+    font-weight: 900;
+    gap: 0.45rem;
+    min-height: 2.75rem;
+    padding: 0.68rem 1rem;
+    transition:
+      transform 180ms ease,
+      box-shadow 180ms ease,
+      background 180ms ease;
+  }
+
+  .sketch-button:hover {
+    box-shadow: 4px 5px 0 rgba(48, 39, 31, 0.2);
+    transform: translateY(-1px) rotate(-0.4deg);
+  }
+
+  .sketch-button:active {
+    box-shadow: 1px 2px 0 rgba(48, 39, 31, 0.2);
+    transform: translateY(2px);
+  }
+
+  .mini-heading {
+    align-items: center;
+    color: theme("colors.ink");
+    display: flex;
+    font-family: theme("fontFamily.sketch");
+    font-size: 0.86rem;
+    font-weight: 900;
+    gap: 0.4rem;
+    text-transform: uppercase;
+  }
+
+  .chip {
+    border: 2px solid rgba(48, 39, 31, 0.72);
+    border-radius: 999px;
+    color: theme("colors.ink");
+    display: inline-flex;
+    font-family: theme("fontFamily.sketch");
+    font-size: 0.85rem;
+    font-weight: 800;
+    line-height: 1.2;
+    padding: 0.42rem 0.65rem;
+  }
+}
+
+.doodle {
+  pointer-events: none;
+  position: fixed;
+  z-index: 0;
+}
+
+.doodle-grapes {
+  background:
+    radial-gradient(circle at 25% 30%, rgba(124, 63, 88, 0.28) 0 9px, transparent 10px),
+    radial-gradient(circle at 43% 45%, rgba(124, 63, 88, 0.24) 0 10px, transparent 11px),
+    radial-gradient(circle at 62% 30%, rgba(124, 63, 88, 0.22) 0 8px, transparent 9px),
+    radial-gradient(circle at 51% 65%, rgba(124, 63, 88, 0.2) 0 9px, transparent 10px);
+  height: 120px;
+  left: -28px;
+  top: 130px;
+  transform: rotate(-12deg);
+  width: 120px;
+}
+
+.doodle-spark {
+  border: 2px solid rgba(48, 39, 31, 0.22);
+  border-radius: 42% 58% 50% 50%;
+  height: 92px;
+  right: -25px;
+  top: 60px;
+  transform: rotate(18deg);
+  width: 92px;
+}
+
+.doodle-spark::after,
+.doodle-spark::before {
+  background: rgba(232, 139, 144, 0.45);
+  border: 2px solid rgba(48, 39, 31, 0.2);
+  content: "";
+  position: absolute;
+}
+
+.doodle-spark::before {
+  border-radius: 999px;
+  height: 12px;
+  left: 18px;
+  top: 30px;
+  width: 48px;
+}
+
+.doodle-spark::after {
+  border-radius: 999px;
+  height: 44px;
+  left: 36px;
+  top: 14px;
+  width: 12px;
+}
+
+main > div:not(.doodle) {
+  position: relative;
+  z-index: 1;
+}
