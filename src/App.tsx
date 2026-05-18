@@ -15,6 +15,7 @@ import {
 } from "lucide-react";
 import { QuizCard, type QuizOption } from "./components/QuizCard";
 import { ResultCard } from "./components/ResultCard";
+import { WineLibraryCard } from "./components/WineLibraryCard";
 import { wines } from "./data/wines";
 import type {
   BodyPreference,
@@ -95,6 +96,13 @@ const defaultSurpriseAnswers: Required<QuizAnswers> = {
   crowd: "adventurous",
 };
 
+function isAllWinesRoute() {
+  return (
+    window.location.pathname.endsWith("/all-wines") ||
+    window.location.search.includes("view=all-wines")
+  );
+}
+
 function isComplete(answers: QuizAnswers): answers is Required<QuizAnswers> {
   return Boolean(
     answers.category && answers.vibe && answers.dryness && answers.body && answers.crowd,
@@ -170,6 +178,50 @@ function App() {
     setAnswers(defaultSurpriseAnswers);
     setStarted(true);
     setShowResults(true);
+  }
+
+  if (isAllWinesRoute()) {
+    return (
+      <main className="min-h-screen overflow-hidden bg-navy text-ivory">
+        <div className="doodle doodle-grapes" aria-hidden="true" />
+        <div className="doodle doodle-spark" aria-hidden="true" />
+
+        <div className="mx-auto flex min-h-screen w-full max-w-6xl flex-col px-4 py-5 sm:px-6 lg:px-8">
+          <header className="flex items-center justify-between gap-3 py-2">
+            <a
+              className="flex items-center gap-2 font-sketch text-lg font-normal tracking-[0.08em] text-ivory"
+              href="/tonight-wine-quiz/"
+            >
+              <span className="grid size-10 place-items-center rounded-full border border-cork bg-ivory/[0.06] text-cork shadow-soft">
+                <Wine size={22} />
+              </span>
+              Tonight Wine
+            </a>
+          </header>
+
+          <section className="py-8">
+            <div className="mb-7">
+              <p className="font-body text-sm font-medium uppercase tracking-[0.22em] text-cork">
+                The full cellar
+              </p>
+              <h1 className="mt-1 font-sketch text-4xl font-normal leading-tight tracking-[0.01em] text-ivory sm:text-5xl">
+                All wines
+              </h1>
+              <p className="mt-3 max-w-2xl text-sm font-light leading-6 text-ivory/72 sm:text-base">
+                Browse every wine style in the recommendation dataset, including traits,
+                tasting notes, snack pairings, and LCBO search links.
+              </p>
+            </div>
+
+            <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-3">
+              {wines.map((wine) => (
+                <WineLibraryCard key={wine.id} wine={wine} />
+              ))}
+            </div>
+          </section>
+        </div>
+      </main>
+    );
   }
 
   return (
