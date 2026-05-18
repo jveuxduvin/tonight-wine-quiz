@@ -22,6 +22,7 @@ import type {
   DrinkChoice,
   DrynessPreference,
   QuizAnswers,
+  ScoredWine,
   Vibe,
 } from "./types";
 import { getTopWineRecommendations } from "./utils/scoring";
@@ -105,14 +106,20 @@ function App() {
   const [step, setStep] = useState(0);
   const [answers, setAnswers] = useState<QuizAnswers>({});
   const [showResults, setShowResults] = useState(false);
+  const [surpriseResults, setSurpriseResults] = useState<ScoredWine[] | null>(null);
 
   const activeQuestion = questions[step];
   const recommendations = useMemo(() => {
+    if (surpriseResults) {
+      return surpriseResults;
+    }
+
     const completed = isComplete(answers) ? answers : defaultSurpriseAnswers;
     return getTopWineRecommendations(wines, completed);
-  }, [answers]);
+  }, [answers, surpriseResults]);
 
   function updateAnswer(value: string) {
+    setSurpriseResults(null);
     setAnswers((current) => {
       switch (activeQuestion.key) {
         case "category":
@@ -148,29 +155,37 @@ function App() {
     setAnswers({});
     setStep(0);
     setShowResults(false);
+    setSurpriseResults(null);
     setStarted(true);
   }
 
   function surpriseMe() {
+    const shuffled = [...wines].sort(() => Math.random() - 0.5);
+    setSurpriseResults(
+      shuffled.slice(0, 3).map((wine, index) => ({
+        ...wine,
+        score: 3 - index,
+      })),
+    );
     setAnswers(defaultSurpriseAnswers);
     setStarted(true);
     setShowResults(true);
   }
 
   return (
-    <main className="min-h-screen overflow-hidden bg-cream text-ink">
+    <main className="min-h-screen overflow-hidden bg-navy text-ivory">
       <div className="doodle doodle-grapes" aria-hidden="true" />
       <div className="doodle doodle-spark" aria-hidden="true" />
 
       <div className="mx-auto flex min-h-screen w-full max-w-5xl flex-col px-4 py-5 sm:px-6 lg:px-8">
         <header className="flex items-center justify-between gap-3 py-2">
-          <div className="flex items-center gap-2 font-sketch text-lg font-black">
-            <span className="grid size-10 rotate-[-5deg] place-items-center rounded-full border-2 border-ink bg-rose shadow-sketch">
+          <div className="flex items-center gap-2 font-sketch text-lg font-normal tracking-[0.08em] text-ivory">
+            <span className="grid size-10 place-items-center rounded-full border border-cork bg-ivory/[0.06] text-cork shadow-soft">
               <Wine size={22} />
             </span>
             Tonight Wine
           </div>
-          <button type="button" onClick={surpriseMe} className="sketch-button bg-white text-sm">
+          <button type="button" onClick={surpriseMe} className="sketch-button bg-transparent text-sm text-ivory">
             <Shuffle size={17} />
             Surprise me
           </button>
@@ -180,21 +195,18 @@ function App() {
           <section className="grid flex-1 place-items-center py-10">
             <div className="w-full max-w-2xl">
               <div className="mb-5 flex justify-center">
-                <div className="relative grid size-24 rotate-[-4deg] place-items-center rounded-[2rem] border-2 border-ink bg-butter shadow-sketch">
+                <div className="relative grid size-24 place-items-center rounded-t-full border border-cork bg-ivory/[0.06] text-cork shadow-sketch">
                   <Grape size={44} />
-                  <span className="absolute -right-4 -top-3 rotate-12 rounded-full border-2 border-ink bg-white px-3 py-1 font-sketch text-sm font-black">
-                    pop!
-                  </span>
                 </div>
               </div>
-              <div className="sketch-card bg-white/[0.84] p-6 text-center shadow-sketch sm:p-9">
-                <p className="font-sketch text-sm font-black uppercase tracking-[0.18em] text-cork">
-                  Snack-adjacent, not snack-led
+              <div className="sketch-card p-6 text-center shadow-sketch sm:p-9">
+                <p className="font-body text-sm font-medium uppercase tracking-[0.24em] text-cork">
+                  choose the bottle
                 </p>
-                <h1 className="mt-3 font-sketch text-5xl font-black leading-[0.95] text-ink sm:text-6xl">
+                <h1 className="mt-3 font-sketch text-5xl font-normal leading-[0.98] text-ivory sm:text-6xl">
                   What are we drinking tonight?
                 </h1>
-                <p className="mx-auto mt-5 max-w-xl text-base leading-7 text-ink/[0.78] sm:text-lg">
+                <p className="mx-auto mt-5 max-w-xl text-base leading-7 text-ivory/75 sm:text-lg">
                   Answer five quick wine mood questions and get three bottle styles,
                   tasting notes, and chips that make sense after the wine is chosen.
                 </p>
@@ -202,7 +214,7 @@ function App() {
                   <button
                     type="button"
                     onClick={() => setStarted(true)}
-                    className="sketch-button justify-center bg-grape px-6 py-4 text-white"
+                    className="sketch-button justify-center bg-ivory px-6 py-4 text-navy"
                   >
                     <Sparkles size={19} />
                     Start quiz
@@ -210,7 +222,7 @@ function App() {
                   <button
                     type="button"
                     onClick={surpriseMe}
-                    className="sketch-button justify-center bg-white px-6 py-4"
+                    className="sketch-button justify-center bg-transparent px-6 py-4 text-ivory"
                   >
                     <Shuffle size={19} />
                     Surprise me
@@ -223,14 +235,14 @@ function App() {
           <section className="py-7">
             <div className="mb-6 flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
               <div>
-                <p className="font-sketch text-sm font-black uppercase tracking-[0.16em] text-grape">
-                  The corkboard has spoken
+                <p className="font-body text-sm font-medium uppercase tracking-[0.22em] text-cork">
+                  La cave recommends
                 </p>
-                <h2 className="mt-1 font-sketch text-4xl font-black leading-tight sm:text-5xl">
+                <h2 className="mt-1 font-sketch text-4xl font-normal leading-tight tracking-[0.01em] text-ivory sm:text-5xl">
                   Your top 3 pours
                 </h2>
               </div>
-              <button type="button" onClick={retakeQuiz} className="sketch-button bg-white">
+              <button type="button" onClick={retakeQuiz} className="sketch-button bg-transparent text-ivory">
                 <RefreshCw size={18} />
                 Retake quiz
               </button>
@@ -248,8 +260,8 @@ function App() {
               <div className="mb-4 flex items-center gap-2">
                 {questions.map((question, index) => (
                   <div
-                    className={`h-3 flex-1 rounded-full border-2 border-ink ${
-                      index <= step ? "bg-grape" : "bg-white"
+                    className={`h-2 flex-1 rounded-full border border-ivory/25 ${
+                      index <= step ? "bg-cork" : "bg-ivory/[0.08]"
                     }`}
                     key={question.key}
                   />

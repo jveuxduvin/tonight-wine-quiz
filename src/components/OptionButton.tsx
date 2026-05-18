@@ -20,20 +20,20 @@ export function OptionButton<T extends string>({
     <button
       type="button"
       onClick={() => onSelect(value)}
-      className={`group flex min-h-14 w-full items-center justify-between gap-3 rounded-[1.35rem] border-2 px-4 py-3 text-left font-sketch text-base font-bold transition duration-200 ${
+      className={`group flex min-h-14 w-full items-center justify-between gap-3 rounded-2xl border px-4 py-3 text-left font-body text-base font-normal transition duration-200 ${
         selected
-          ? "translate-x-0.5 -translate-y-0.5 rotate-[-0.4deg] border-ink bg-butter shadow-sketch"
-          : "border-ink/[0.55] bg-white/75 hover:-translate-y-0.5 hover:border-ink hover:bg-white"
+          ? "border-cork bg-[#e6c99a] text-navy shadow-soft"
+          : "border-ivory/25 bg-ivory/[0.045] text-ivory hover:-translate-y-0.5 hover:border-cork hover:bg-ivory/[0.08]"
       }`}
       aria-pressed={selected}
     >
       <span className="flex items-center gap-3">
-        {icon ? <span className="text-grape">{icon}</span> : null}
+        {icon ? <span className="text-cork">{icon}</span> : null}
         <span>{label}</span>
       </span>
       <span
-        className={`grid size-7 place-items-center rounded-full border-2 border-ink transition ${
-          selected ? "bg-leaf text-white" : "bg-cream text-transparent"
+        className={`grid size-7 place-items-center rounded-full border transition ${
+          selected ? "border-cork bg-cork text-navy" : "border-ivory/35 bg-transparent text-transparent"
         }`}
       >
         <Check size={16} strokeWidth={3} />

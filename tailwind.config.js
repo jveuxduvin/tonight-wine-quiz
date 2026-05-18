@@ -4,29 +4,37 @@ export default {
   theme: {
     extend: {
       colors: {
-        cream: "#fff6df",
-        ink: "#30271f",
-        grape: "#7c3f58",
-        rose: "#e88b90",
-        cork: "#c98d55",
-        leaf: "#6b8b5a",
-        butter: "#f5d36b",
-        skywash: "#b8d8d8"
+        cream: "#f4e8d1",
+        ink: "#f4e8d1",
+        grape: "#8e263a",
+        rose: "#c88b78",
+        cork: "#b89464",
+        leaf: "#7f8d76",
+        butter: "#d7bd78",
+        skywash: "#9db3bd",
+        navy: "#010714",
+        midnight: "#06142a",
+        ivory: "#f4e8d1",
+        pewter: "#9aa6b2"
       },
       boxShadow: {
-        sketch: "5px 6px 0 rgba(48, 39, 31, 0.16)",
-        soft: "0 18px 45px rgba(48, 39, 31, 0.12)"
+        sketch: "0 22px 60px rgba(0, 0, 0, 0.34)",
+        soft: "0 18px 45px rgba(0, 0, 0, 0.28)"
       },
       fontFamily: {
         sketch: [
-          "ui-rounded",
-          "Comic Sans MS",
-          "Bradley Hand",
-          "Trebuchet MS",
+          "Didot",
+          "Bodoni 72",
+          "Georgia",
+          "Times New Roman",
+          "serif"
+        ],
+        body: [
+          "Optima",
+          "Avenir Next",
           "system-ui",
           "sans-serif"
         ],
-        body: ["Inter", "ui-sans-serif", "system-ui", "sans-serif"]
       }
     }
   },

@@ -9,15 +9,15 @@ export function TraitMeter({ label, value, max = 5 }: TraitMeterProps) {
 
   return (
     <div className="space-y-1.5">
-      <div className="flex items-center justify-between text-xs font-black uppercase tracking-[0.08em] text-ink/70">
+      <div className="flex items-center justify-between text-xs font-normal uppercase tracking-[0.14em] text-ivory/60">
         <span>{label}</span>
         <span>
           {value}/{max}
         </span>
       </div>
-      <div className="h-3 rounded-full border-2 border-ink bg-cream">
+      <div className="h-3 rounded-full border border-ivory/25 bg-navy">
         <div
-          className="h-full rounded-full border-r-2 border-ink bg-grape"
+          className="h-full rounded-full border-r border-ivory/30 bg-cork"
           style={{ width: `${percent}%` }}
         />
       </div>

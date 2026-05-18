@@ -32,11 +32,11 @@ export function QuizCard({
   onNext,
 }: QuizCardProps) {
   return (
-    <section className="sketch-card bg-white/[0.84] p-5 shadow-sketch sm:p-6">
-      <p className="font-sketch text-sm font-black uppercase tracking-[0.16em] text-grape">
+    <section className="sketch-card p-5 shadow-sketch sm:p-6">
+      <p className="font-body text-sm font-medium uppercase tracking-[0.24em] text-cork">
         {eyebrow}
       </p>
-      <h2 className="mt-2 font-sketch text-3xl font-black leading-tight text-ink sm:text-4xl">
+      <h2 className="mt-2 font-sketch text-3xl font-normal leading-tight text-ivory sm:text-4xl">
         {question}
       </h2>
 
@@ -58,7 +58,7 @@ export function QuizCard({
           type="button"
           onClick={onBack}
           disabled={!canGoBack}
-          className="sketch-button bg-white disabled:pointer-events-none disabled:opacity-[0.35]"
+          className="sketch-button bg-transparent text-ivory disabled:pointer-events-none disabled:opacity-[0.35]"
         >
           <ArrowLeft size={18} />
           Back
@@ -67,7 +67,7 @@ export function QuizCard({
           type="button"
           onClick={onNext}
           disabled={!selected}
-          className="sketch-button bg-grape text-white disabled:pointer-events-none disabled:opacity-[0.45]"
+          className="sketch-button bg-ivory text-navy disabled:pointer-events-none disabled:opacity-[0.45]"
         >
           {isLastQuestion ? (
             <>
