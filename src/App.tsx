@@ -34,6 +34,7 @@ const questions = [
     options: [
       { label: "White", value: "white", icon: <GlassWater size={20} /> },
       { label: "Rosé", value: "rose", icon: <Sun size={20} /> },
+      { label: "Sparkling", value: "sparkling", icon: <Sparkles size={20} /> },
       { label: "Red", value: "red", icon: <Wine size={20} /> },
       { label: "Sweet / dessert", value: "dessert", icon: <Cherry size={20} /> },
       { label: "Surprise me", value: "surprise", icon: <Shuffle size={20} /> },
