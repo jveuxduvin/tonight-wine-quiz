@@ -1,4 +1,10 @@
-export type WineCategory = "white" | "rose" | "red" | "dessert";
+export type WineCategory =
+  | "white"
+  | "rose"
+  | "red"
+  | "dessert"
+  | "sparkling"
+  | "orange";
 
 export type Wine = {
   id: string;
