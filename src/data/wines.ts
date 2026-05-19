@@ -1,6 +1,6 @@
 import type { Wine } from "../types";
 
-export const wines: Wine[] = [
+export const wines = [
   {
     id: "vinho-verde",
     name: "Vinho Verde",
@@ -817,4 +817,4 @@ export const wines: Wine[] = [
     expectation: "Textured, grippy, funky white wine made with red-wine-style skin contact.",
     lcboSearchTerms: ["orange wine", "skin contact wine", "amber wine"],
   },
-];
+] satisfies Wine[];

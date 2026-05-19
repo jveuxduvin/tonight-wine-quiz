@@ -17,6 +17,7 @@ import { QuizCard, type QuizOption } from "./components/QuizCard";
 import { ResultCard } from "./components/ResultCard";
 import { WineLibraryCard } from "./components/WineLibraryCard";
 import { wines } from "./data/wines";
+import { type Language, localizeScoredWines, localizeWines, ui } from "./i18n";
 import type {
   BodyPreference,
   CrowdMode,
@@ -28,65 +29,69 @@ import type {
 } from "./types";
 import { getTopWineRecommendations } from "./utils/scoring";
 
-const questions = [
-  {
+function getQuestions(language: Language) {
+  const questionCopy = ui[language].questions;
+
+  return [
+    {
     key: "category",
-    eyebrow: "Round 1",
-    question: "What are we drinking tonight?",
+    eyebrow: questionCopy[0].eyebrow,
+    question: questionCopy[0].question,
     options: [
-      { label: "White", value: "white", icon: <GlassWater size={20} /> },
-      { label: "Rosé", value: "rose", icon: <Sun size={20} /> },
-      { label: "Sparkling", value: "sparkling", icon: <Sparkles size={20} /> },
-      { label: "Red", value: "red", icon: <Wine size={20} /> },
-      { label: "Sweet / dessert", value: "dessert", icon: <Cherry size={20} /> },
-      { label: "Surprise me", value: "surprise", icon: <Shuffle size={20} /> },
+      { label: questionCopy[0].options.white, value: "white", icon: <GlassWater size={20} /> },
+      { label: questionCopy[0].options.rose, value: "rose", icon: <Sun size={20} /> },
+      { label: questionCopy[0].options.sparkling, value: "sparkling", icon: <Sparkles size={20} /> },
+      { label: questionCopy[0].options.red, value: "red", icon: <Wine size={20} /> },
+      { label: questionCopy[0].options.dessert, value: "dessert", icon: <Cherry size={20} /> },
+      { label: questionCopy[0].options.surprise, value: "surprise", icon: <Shuffle size={20} /> },
     ] satisfies QuizOption<DrinkChoice>[],
   },
   {
     key: "vibe",
-    eyebrow: "Round 2",
-    question: "What vibe do you want?",
+    eyebrow: questionCopy[1].eyebrow,
+    question: questionCopy[1].question,
     options: [
-      { label: "Crisp & refreshing", value: "crisp", icon: <Sparkles size={20} /> },
-      { label: "Fruity & easy", value: "fruity", icon: <Cherry size={20} /> },
-      { label: "Smooth & cozy", value: "cozy", icon: <Heart size={20} /> },
-      { label: "Bold & intense", value: "bold", icon: <Flame size={20} /> },
-      { label: "Weird / nerdy / interesting", value: "weird", icon: <HelpCircle size={20} /> },
+      { label: questionCopy[1].options.crisp, value: "crisp", icon: <Sparkles size={20} /> },
+      { label: questionCopy[1].options.fruity, value: "fruity", icon: <Cherry size={20} /> },
+      { label: questionCopy[1].options.cozy, value: "cozy", icon: <Heart size={20} /> },
+      { label: questionCopy[1].options.bold, value: "bold", icon: <Flame size={20} /> },
+      { label: questionCopy[1].options.weird, value: "weird", icon: <HelpCircle size={20} /> },
     ] satisfies QuizOption<Vibe>[],
   },
   {
     key: "dryness",
-    eyebrow: "Round 3",
-    question: "Dryness preference?",
+    eyebrow: questionCopy[2].eyebrow,
+    question: questionCopy[2].question,
     options: [
-      { label: "Dry", value: "dry", icon: <Sparkles size={20} /> },
-      { label: "Off-dry", value: "offDry", icon: <Sun size={20} /> },
-      { label: "Sweet", value: "sweet", icon: <Cherry size={20} /> },
-      { label: "No preference", value: "none", icon: <Shuffle size={20} /> },
+      { label: questionCopy[2].options.dry, value: "dry", icon: <Sparkles size={20} /> },
+      { label: questionCopy[2].options.offDry, value: "offDry", icon: <Sun size={20} /> },
+      { label: questionCopy[2].options.sweet, value: "sweet", icon: <Cherry size={20} /> },
+      { label: questionCopy[2].options.none, value: "none", icon: <Shuffle size={20} /> },
     ] satisfies QuizOption<DrynessPreference>[],
   },
   {
     key: "body",
-    eyebrow: "Round 4",
-    question: "Body preference?",
+    eyebrow: questionCopy[3].eyebrow,
+    question: questionCopy[3].question,
     options: [
-      { label: "Light", value: "light", icon: <GlassWater size={20} /> },
-      { label: "Medium", value: "medium", icon: <Beer size={20} /> },
-      { label: "Full", value: "full", icon: <Grape size={20} /> },
-      { label: "No preference", value: "none", icon: <Shuffle size={20} /> },
+      { label: questionCopy[3].options.light, value: "light", icon: <GlassWater size={20} /> },
+      { label: questionCopy[3].options.medium, value: "medium", icon: <Beer size={20} /> },
+      { label: questionCopy[3].options.full, value: "full", icon: <Grape size={20} /> },
+      { label: questionCopy[3].options.none, value: "none", icon: <Shuffle size={20} /> },
     ] satisfies QuizOption<BodyPreference>[],
   },
   {
     key: "crowd",
-    eyebrow: "Final pour",
-    question: "Crowd mode?",
+    eyebrow: questionCopy[4].eyebrow,
+    question: questionCopy[4].question,
     options: [
-      { label: "Safe crowd-pleaser", value: "safe", icon: <Heart size={20} /> },
-      { label: "Balanced", value: "balanced", icon: <Wine size={20} /> },
-      { label: "Adventurous", value: "adventurous", icon: <Sparkles size={20} /> },
+      { label: questionCopy[4].options.safe, value: "safe", icon: <Heart size={20} /> },
+      { label: questionCopy[4].options.balanced, value: "balanced", icon: <Wine size={20} /> },
+      { label: questionCopy[4].options.adventurous, value: "adventurous", icon: <Sparkles size={20} /> },
     ] satisfies QuizOption<CrowdMode>[],
   },
-] as const;
+  ] as const;
+}
 
 const defaultSurpriseAnswers: Required<QuizAnswers> = {
   category: "surprise",
@@ -111,7 +116,7 @@ function isComplete(answers: QuizAnswers): answers is Required<QuizAnswers> {
   );
 }
 
-function PourAnimation() {
+function PourAnimation({ copy }: { copy: (typeof ui)[Language] }) {
   return (
     <section className="dream-enter grid flex-1 place-items-center py-10" aria-live="polite">
       <div className="pour-card sketch-card w-full max-w-md px-6 py-9 text-center shadow-sketch">
@@ -132,10 +137,10 @@ function PourAnimation() {
           <div className="loader-base" />
         </div>
         <p className="mt-7 font-body text-xs font-medium uppercase tracking-[0.24em] text-cork">
-          One moment
+          {copy.oneMoment}
         </p>
         <h2 className="mt-2 font-sketch text-3xl font-normal text-ivory">
-          Pouring your picks
+          {copy.pouring}
         </h2>
       </div>
     </section>
@@ -143,6 +148,10 @@ function PourAnimation() {
 }
 
 function App() {
+  const [language, setLanguage] = useState<Language>(() => {
+    const storedLanguage = window.localStorage.getItem("tonight-wine-language");
+    return storedLanguage === "fr" ? "fr" : "en";
+  });
   const [started, setStarted] = useState(false);
   const [step, setStep] = useState(0);
   const [answers, setAnswers] = useState<QuizAnswers>({});
@@ -151,6 +160,8 @@ function App() {
   const [surpriseResults, setSurpriseResults] = useState<ScoredWine[] | null>(null);
   const pourTimer = useRef<ReturnType<typeof window.setTimeout> | null>(null);
 
+  const copy = ui[language];
+  const questions = useMemo(() => getQuestions(language), [language]);
   const activeQuestion = questions[step];
   const recommendations = useMemo(() => {
     if (surpriseResults) {
@@ -160,6 +171,11 @@ function App() {
     const completed = isComplete(answers) ? answers : defaultSurpriseAnswers;
     return getTopWineRecommendations(wines, completed);
   }, [answers, surpriseResults]);
+  const displayedRecommendations = useMemo(
+    () => localizeScoredWines(recommendations, language),
+    [language, recommendations],
+  );
+  const displayedWines = useMemo(() => localizeWines(wines, language), [language]);
 
   useEffect(() => {
     return () => {
@@ -168,6 +184,10 @@ function App() {
       }
     };
   }, []);
+
+  useEffect(() => {
+    window.localStorage.setItem("tonight-wine-language", language);
+  }, [language]);
 
   function clearPourTimer() {
     if (pourTimer.current) {
@@ -250,6 +270,10 @@ function App() {
     setShowResults(true);
   }
 
+  function toggleLanguage() {
+    setLanguage((current) => (current === "en" ? "fr" : "en"));
+  }
+
   if (isAllWinesRoute()) {
     return (
       <main className="wine-shell min-h-screen overflow-hidden bg-navy text-ivory">
@@ -264,27 +288,34 @@ function App() {
               <span className="grid size-10 place-items-center rounded-full border border-cork bg-ivory/[0.06] text-cork shadow-soft">
                 <Wine size={22} />
               </span>
-              Tonight Wine
+              {copy.brand}
             </a>
+            <button
+              type="button"
+              onClick={toggleLanguage}
+              className="language-toggle"
+              aria-label={language === "en" ? "Passer en français" : "Switch to English"}
+            >
+              {language === "en" ? "FR" : "EN"}
+            </button>
           </header>
 
           <section className="py-8">
             <div className="mb-7">
               <p className="font-body text-sm font-medium uppercase tracking-[0.22em] text-cork">
-                The full cellar
+                {copy.fullCellar}
               </p>
               <h1 className="mt-1 font-sketch text-4xl font-normal leading-tight tracking-[0.01em] text-ivory sm:text-5xl">
-                All wines
+                {copy.allWines}
               </h1>
               <p className="mt-3 max-w-2xl text-sm font-light leading-6 text-ivory/72 sm:text-base">
-                Browse every wine style in the recommendation dataset, including traits,
-                tasting notes, snack pairings, and LCBO search links.
+                {copy.allWinesBody}
               </p>
             </div>
 
             <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-3">
-              {wines.map((wine) => (
-                <WineLibraryCard key={wine.id} wine={wine} />
+              {displayedWines.map((wine) => (
+                <WineLibraryCard key={wine.id} wine={wine} labels={copy} />
               ))}
             </div>
           </section>
@@ -308,12 +339,22 @@ function App() {
             <span className="grid size-10 place-items-center rounded-full border border-cork bg-ivory/[0.06] text-cork shadow-soft">
               <Wine size={22} />
             </span>
-            Tonight Wine
+            {copy.brand}
           </button>
-          <button type="button" onClick={surpriseMe} className="sketch-button bg-transparent text-sm text-ivory">
-            <Shuffle size={17} />
-            Surprise me
-          </button>
+          <div className="flex shrink-0 items-center gap-2">
+            <button type="button" onClick={surpriseMe} className="header-action text-ivory">
+              <Shuffle size={16} />
+              <span className="hidden sm:inline">{copy.surpriseMe}</span>
+            </button>
+            <button
+              type="button"
+              onClick={toggleLanguage}
+              className="language-toggle"
+              aria-label={language === "en" ? "Passer en français" : "Switch to English"}
+            >
+              {language === "en" ? "FR" : "EN"}
+            </button>
+          </div>
         </header>
 
         {!started ? (
@@ -326,14 +367,13 @@ function App() {
               </div>
               <div className="sketch-card p-6 text-center shadow-sketch sm:p-9">
                 <p className="font-body text-sm font-medium uppercase tracking-[0.24em] text-cork">
-                  choose the bottle
+                  {copy.chooseBottle}
                 </p>
                 <h1 className="mt-3 font-sketch text-5xl font-normal leading-[0.98] text-ivory sm:text-6xl">
-                  What are we drinking tonight?
+                  {copy.homeTitle}
                 </h1>
                 <p className="mx-auto mt-5 max-w-xl text-base leading-7 text-ivory/75 sm:text-lg">
-                  Answer five quick wine mood questions and get three bottle styles,
-                  tasting notes, and chips that make sense after the wine is chosen.
+                  {copy.homeBody}
                 </p>
                 <div className="mt-7 flex flex-col justify-center gap-3 sm:flex-row sm:gap-4">
                   <button
@@ -342,7 +382,7 @@ function App() {
                     className="hero-action hero-action-primary justify-center px-6 py-4"
                   >
                     <Sparkles size={19} />
-                    Start quiz
+                    {copy.startQuiz}
                   </button>
                   <button
                     type="button"
@@ -350,39 +390,39 @@ function App() {
                     className="hero-action hero-action-secondary justify-center px-6 py-4"
                   >
                     <Shuffle size={19} />
-                    Surprise me
+                    {copy.surpriseMe}
                   </button>
                 </div>
               </div>
             </div>
           </section>
         ) : isPouring ? (
-          <PourAnimation />
+          <PourAnimation copy={copy} />
         ) : showResults ? (
           <section className="dream-enter py-7">
             <div className="mb-6 flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
               <div>
                 <p className="font-body text-sm font-medium uppercase tracking-[0.22em] text-cork">
-                  La cave recommends
+                  {copy.caveRecommends}
                 </p>
                 <h2 className="mt-1 font-sketch text-4xl font-normal leading-tight tracking-[0.01em] text-ivory sm:text-5xl">
-                  Your top 3 pours
+                  {copy.topPours}
                 </h2>
               </div>
               <button type="button" onClick={retakeQuiz} className="sketch-button bg-transparent text-ivory">
                 <RefreshCw size={18} />
-                Retake quiz
+                {copy.retakeQuiz}
               </button>
             </div>
 
             <div className="grid gap-5 lg:grid-cols-3">
-              {recommendations.map((wine, index) => (
+              {displayedRecommendations.map((wine, index) => (
                 <div
                   className="dream-enter"
                   key={wine.id}
                   style={{ animationDelay: `${index * 70}ms` }}
                 >
-                  <ResultCard wine={wine} rank={index + 1} />
+                  <ResultCard wine={wine} rank={index + 1} labels={copy} />
                 </div>
               ))}
             </div>
@@ -411,6 +451,11 @@ function App() {
                 onSelect={updateAnswer}
                 onBack={goBack}
                 onNext={goNext}
+                labels={{
+                  back: copy.back,
+                  next: copy.next,
+                  seeResults: copy.seeResults,
+                }}
               />
             </div>
           </section>

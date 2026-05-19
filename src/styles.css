@@ -83,6 +83,55 @@ button {
     transform: translateY(2px);
   }
 
+  .header-action {
+    align-items: center;
+    border: 1px solid rgba(245, 237, 223, 0.35);
+    border-radius: 999px;
+    display: inline-flex;
+    font-family: theme("fontFamily.body");
+    font-size: 0.86rem;
+    font-weight: 500;
+    gap: 0.42rem;
+    min-height: 2.5rem;
+    padding: 0 0.78rem;
+    transition:
+      border-color 180ms ease,
+      background 180ms ease,
+      color 180ms ease,
+      transform 180ms ease;
+  }
+
+  .header-action:hover {
+    background: rgba(245, 237, 223, 0.06);
+    border-color: rgba(202, 160, 100, 0.72);
+    color: theme("colors.cork");
+    transform: translateY(-1px);
+  }
+
+  .language-toggle {
+    border: 1px solid rgba(245, 237, 223, 0.35);
+    border-radius: 999px;
+    background: rgba(245, 237, 223, 0.05);
+    color: theme("colors.ivory");
+    font-family: theme("fontFamily.body");
+    font-size: 0.74rem;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    min-height: 2.5rem;
+    min-width: 2.85rem;
+    padding: 0 0.7rem;
+    transition:
+      border-color 180ms ease,
+      color 180ms ease,
+      transform 180ms ease;
+  }
+
+  .language-toggle:hover {
+    border-color: rgba(202, 160, 100, 0.72);
+    color: theme("colors.cork");
+    transform: translateY(-1px);
+  }
+
   .hero-action {
     align-items: center;
     border-radius: 999px;

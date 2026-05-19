@@ -18,6 +18,11 @@ type QuizCardProps = {
   onSelect: (value: string) => void;
   onBack: () => void;
   onNext: () => void;
+  labels: {
+    back: string;
+    next: string;
+    seeResults: string;
+  };
 };
 
 export function QuizCard({
@@ -30,6 +35,7 @@ export function QuizCard({
   onSelect,
   onBack,
   onNext,
+  labels,
 }: QuizCardProps) {
   return (
     <section className="dream-enter sketch-card p-5 shadow-sketch sm:p-6">
@@ -66,7 +72,7 @@ export function QuizCard({
           className="sketch-button bg-transparent text-ivory disabled:pointer-events-none disabled:opacity-[0.35]"
         >
           <ArrowLeft size={18} />
-          Back
+          {labels.back}
         </button>
         <button
           type="button"
@@ -77,11 +83,11 @@ export function QuizCard({
           {isLastQuestion ? (
             <>
               <PartyPopper size={18} />
-              See results
+              {labels.seeResults}
             </>
           ) : (
             <>
-              Next
+              {labels.next}
               <ArrowRight size={18} />
             </>
           )}
