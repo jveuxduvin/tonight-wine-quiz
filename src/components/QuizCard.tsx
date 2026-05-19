@@ -32,7 +32,7 @@ export function QuizCard({
   onNext,
 }: QuizCardProps) {
   return (
-    <section className="sketch-card p-5 shadow-sketch sm:p-6">
+    <section className="dream-enter sketch-card p-5 shadow-sketch sm:p-6">
       <p className="font-body text-sm font-medium uppercase tracking-[0.24em] text-cork">
         {eyebrow}
       </p>
@@ -41,15 +41,20 @@ export function QuizCard({
       </h2>
 
       <div className="mt-6 grid gap-3">
-        {options.map((option) => (
-          <OptionButton
+        {options.map((option, index) => (
+          <div
+            className="dream-option"
             key={option.value}
-            label={option.label}
-            value={option.value}
-            selected={selected === option.value}
-            icon={option.icon}
-            onSelect={onSelect}
-          />
+            style={{ animationDelay: `${55 + index * 38}ms` }}
+          >
+            <OptionButton
+              label={option.label}
+              value={option.value}
+              selected={selected === option.value}
+              icon={option.icon}
+              onSelect={onSelect}
+            />
+          </div>
         ))}
       </div>
 

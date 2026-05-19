@@ -242,7 +242,7 @@ function App() {
         </header>
 
         {!started ? (
-          <section className="grid flex-1 place-items-center py-10">
+          <section className="dream-enter grid flex-1 place-items-center py-10">
             <div className="w-full max-w-2xl">
               <div className="mb-5 flex justify-center">
                 <div className="relative grid size-24 place-items-center rounded-t-full border border-cork bg-ivory/[0.06] text-cork shadow-sketch">
@@ -282,7 +282,7 @@ function App() {
             </div>
           </section>
         ) : showResults ? (
-          <section className="py-7">
+          <section className="dream-enter py-7">
             <div className="mb-6 flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
               <div>
                 <p className="font-body text-sm font-medium uppercase tracking-[0.22em] text-cork">
@@ -300,7 +300,13 @@ function App() {
 
             <div className="grid gap-5 lg:grid-cols-3">
               {recommendations.map((wine, index) => (
-                <ResultCard key={wine.id} wine={wine} rank={index + 1} />
+                <div
+                  className="dream-enter"
+                  key={wine.id}
+                  style={{ animationDelay: `${index * 70}ms` }}
+                >
+                  <ResultCard wine={wine} rank={index + 1} />
+                </div>
               ))}
             </div>
           </section>
@@ -318,6 +324,7 @@ function App() {
                 ))}
               </div>
               <QuizCard
+                key={activeQuestion.key}
                 eyebrow={activeQuestion.eyebrow}
                 question={activeQuestion.question}
                 options={activeQuestion.options}
