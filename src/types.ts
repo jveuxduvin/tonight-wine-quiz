@@ -20,6 +20,8 @@ export type Wine = {
   flavourNotes: string[];
   chipPairings: string[];
   whyChipsWork: string;
+  cheesePairings: string[];
+  whyCheeseWorks: string;
   expectation: string;
   lcboSearchTerms: string[];
 };

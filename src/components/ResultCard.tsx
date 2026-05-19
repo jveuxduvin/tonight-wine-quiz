@@ -1,4 +1,4 @@
-import { ExternalLink, Grape, Sparkles, Wine } from "lucide-react";
+import { ExternalLink, Grape, Milk, Sparkles, Wine } from "lucide-react";
 import type { ScoredWine } from "../types";
 import { TraitMeter } from "./TraitMeter";
 import { getLcboSearchUrl } from "../utils/lcbo";
@@ -66,6 +66,20 @@ export function ResultCard({ wine, rank, labels }: ResultCardProps) {
             ))}
           </div>
           <p className="mt-2 text-sm font-light leading-6 text-ivory/72">{wine.whyChipsWork}</p>
+        </section>
+
+        <section>
+          <h4 className="mini-heading">
+            <Milk size={16} /> {labels.cheese}
+          </h4>
+          <div className="mt-2 flex flex-wrap gap-2">
+            {wine.cheesePairings.map((pairing) => (
+              <span className="chip border-ivory/35 bg-ivory/[0.08]" key={pairing}>
+                {pairing}
+              </span>
+            ))}
+          </div>
+          <p className="mt-2 text-sm font-light leading-6 text-ivory/72">{wine.whyCheeseWorks}</p>
         </section>
 
         <section>

@@ -1,6 +1,9 @@
 import type { Wine } from "../types";
+import { cheesePairingsByWineId } from "./cheesePairings";
 
-export const wines = [
+type WineWithoutCheese = Omit<Wine, "cheesePairings" | "whyCheeseWorks">;
+
+const baseWines = [
   {
     id: "vinho-verde",
     name: "Vinho Verde",
@@ -817,4 +820,11 @@ export const wines = [
     expectation: "Textured, grippy, funky white wine made with red-wine-style skin contact.",
     lcboSearchTerms: ["orange wine", "skin contact wine", "amber wine"],
   },
-] satisfies Wine[];
+] satisfies WineWithoutCheese[];
+
+export type WineId = keyof typeof cheesePairingsByWineId;
+
+export const wines = baseWines.map((wine) => ({
+  ...wine,
+  ...cheesePairingsByWineId[wine.id as WineId],
+})) satisfies Wine[];

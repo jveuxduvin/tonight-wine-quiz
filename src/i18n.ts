@@ -1,14 +1,18 @@
 import type { ScoredWine, Wine, WineCategory } from "./types";
-import { wines } from "./data/wines";
+import type { WineId } from "./data/wines";
 
 export type Language = "en" | "fr";
 
 type WineTranslation = Pick<
   Wine,
-  "flavourNotes" | "chipPairings" | "whyChipsWork" | "expectation" | "lcboSearchTerms"
+  | "flavourNotes"
+  | "chipPairings"
+  | "whyChipsWork"
+  | "cheesePairings"
+  | "whyCheeseWorks"
+  | "expectation"
+  | "lcboSearchTerms"
 >;
-
-type WineId = (typeof wines)[number]["id"];
 
 export const ui = {
   en: {
@@ -18,7 +22,7 @@ export const ui = {
     chooseBottle: "choose the bottle",
     homeTitle: "What are we drinking tonight?",
     homeBody:
-      "Answer five quick wine mood questions and get three bottle styles, tasting notes, and chips that make sense after the wine is chosen.",
+      "Answer five quick wine mood questions and get three bottle styles, tasting notes, chips, and cheeses that make sense after the wine is chosen.",
     oneMoment: "One moment",
     pouring: "Pouring your picks",
     caveRecommends: "La cave recommends",
@@ -30,10 +34,11 @@ export const ui = {
     fullCellar: "The full cellar",
     allWines: "All wines",
     allWinesBody:
-      "Browse every wine style in the recommendation dataset, including traits, tasting notes, snack pairings, and LCBO search links.",
+      "Browse every wine style in the recommendation dataset, including traits, tasting notes, snack pairings, cheese pairings, and LCBO search links.",
     pick: "Pick",
     flavourNotes: "Flavour notes",
     chips: "Chips & snacks",
+    cheese: "Cheese",
     lcboTerms: "LCBO search terms",
     searchLcbo: "Search LCBO",
     alcohol: "alcohol",
@@ -118,7 +123,7 @@ export const ui = {
     chooseBottle: "Choisir la bouteille",
     homeTitle: "Qu’est-ce qu’on boit ce soir ?",
     homeBody:
-      "Réponds à cinq questions rapides sur ton envie du moment et découvre trois styles de bouteilles, avec notes de dégustation et grignotines qui vont bien avec.",
+      "Réponds à cinq questions rapides sur ton envie du moment et découvre trois styles de bouteilles, avec notes de dégustation, grignotines et fromages qui vont bien avec.",
     oneMoment: "Un instant",
     pouring: "On prépare ta sélection",
     caveRecommends: "La cave recommande",
@@ -130,10 +135,11 @@ export const ui = {
     fullCellar: "Toute la cave",
     allWines: "Tous les vins",
     allWinesBody:
-      "Parcours tous les styles de vin de la base de recommandations, avec profils de goût, notes de dégustation, accords avec des grignotines et liens de recherche LCBO.",
+      "Parcours tous les styles de vin de la base de recommandations, avec profils de goût, notes de dégustation, accords avec des grignotines, accords fromages et liens de recherche LCBO.",
     pick: "Choix",
     flavourNotes: "Notes de dégustation",
     chips: "Croustilles et grignotines",
+    cheese: "Fromages",
     lcboTerms: "Mots-clés LCBO",
     searchLcbo: "Rechercher à la LCBO",
     alcohol: "alcool",
@@ -219,6 +225,8 @@ export const wineTranslations = {
     chipPairings: ["croustilles sel et vinaigre", "croustilles tortilla à la lime"],
     whyChipsWork: "Son acidité vive rend les croustilles salées et acidulées encore plus éclatantes.",
     expectation: "Léger, presque pétillant, citronné, et parfait à ouvrir avant que le souper soit prêt.",
+    cheesePairings: ["chèvre","fromage fermier","mozzarella fraîche"],
+    whyCheeseWorks: "Le Vinho Verde, frais, jeune et très acidulé, fonctionne mieux avec des fromages frais, doux et légèrement acidulés.",
     lcboSearchTerms: ["Vinho Verde", "vin blanc portugais", "blanc faible en alcool"],
   },
   "sauvignon-blanc": {
@@ -226,6 +234,8 @@ export const wineTranslations = {
     chipPairings: ["croustilles à l’aneth", "croustilles jalapeño"],
     whyChipsWork: "Son côté vert et citronné tranche les assaisonnements et garde chaque bouchée bien vive.",
     expectation: "Un blanc lumineux et énergique, plein d’agrumes avec une petite touche herbacée.",
+    cheesePairings: ["fromage de chèvre","chèvre","feta"],
+    whyCheeseWorks: "Le fromage de chèvre acidulé est l’accord classique avec un Sauvignon Blanc citronné et herbacé.",
     lcboSearchTerms: ["Sauvignon Blanc", "Sauvignon Blanc Nouvelle-Zélande", "Sauvignon Loire"],
   },
   albarino: {
@@ -233,6 +243,8 @@ export const wineTranslations = {
     chipPairings: ["croustilles sel et vinaigre", "croustilles aux crevettes"],
     whyChipsWork: "La fraîcheur saline et citronnée rend les grignotines iodées et acidulées plus vibrantes.",
     expectation: "Un blanc côtier, avec agrumes éclatants, fruit à noyau juteux et salinité rafraîchissante.",
+    cheesePairings: ["burrata","manchego","feta"],
+    whyCheeseWorks: "L’acidité vive et la touche saline de l’Albariño vont très bien avec les fromages crémeux, salés ou semi-fermes.",
     lcboSearchTerms: ["Albariño", "Albarino", "Rías Baixas", "vin blanc espagnol"],
   },
   assyrtiko: {
@@ -240,6 +252,8 @@ export const wineTranslations = {
     chipPairings: ["croustilles nature salées", "croustilles kettle"],
     whyChipsWork: "Sa fraîcheur extrême et son intensité minérale adorent le croustillant salé.",
     expectation: "Tranchant, volcanique, minéral, avec une fraîcheur presque mordante.",
+    cheesePairings: ["feta","halloumi","fromage de chèvre affiné"],
+    whyCheeseWorks: "Son acidité tranchante et sa minéralité saline s’accordent très bien avec les fromages grecs salés.",
     lcboSearchTerms: ["Assyrtiko", "vin de Santorin", "vin blanc grec"],
   },
   "gruner-veltliner": {
@@ -247,6 +261,8 @@ export const wineTranslations = {
     chipPairings: ["croustilles salées", "croustilles de légumes"],
     whyChipsWork: "Sa fraîcheur poivrée garde les grignotines salées et végétales bien vivantes.",
     expectation: "Vif, poivré, citronné, et discrètement l’un des blancs les plus faciles à accorder.",
+    cheesePairings: ["fromage de chèvre","havarti","gouda jeune"],
+    whyCheeseWorks: "Son acidité poivrée coupe les fromages doux et crémeux tout en gardant l’accord frais.",
     lcboSearchTerms: ["Grüner Veltliner", "Gruner Veltliner", "vin blanc autrichien"],
   },
   vermentino: {
@@ -254,6 +270,8 @@ export const wineTranslations = {
     chipPairings: ["croustilles à l’huile d’olive", "craquelins aux herbes"],
     whyChipsWork: "Sa fraîcheur méditerranéenne et herbacée aime les grignotines salées et savoureuses.",
     expectation: "Solaire, herbacé, citronné, et facile à boire sans être banal.",
+    cheesePairings: ["pecorino","feta","fromage de chèvre frais"],
+    whyCheeseWorks: "Ses notes méditerranéennes d’agrumes, d’herbes et d’amande vont naturellement avec les fromages salés de brebis ou de chèvre.",
     lcboSearchTerms: ["Vermentino", "vin blanc de Sardaigne", "blanc côtier italien"],
   },
   sancerre: {
@@ -261,6 +279,8 @@ export const wineTranslations = {
     chipPairings: ["craquelins au fromage de chèvre", "croustilles sel et poivre"],
     whyChipsWork: "Les agrumes minéraux coupent magnifiquement les grignotines crémeuses et salées.",
     expectation: "Élégant, minéral, précis, avec toute l’énergie d’un Sauvignon Blanc tendu.",
+    cheesePairings: ["fromage de chèvre","crottin","chèvre"],
+    whyCheeseWorks: "C’est l’accord classique de la Loire : un Sauvignon Blanc minéral avec du fromage de chèvre acidulé.",
     lcboSearchTerms: ["Sancerre", "Sauvignon Blanc de Loire", "Sauvignon Blanc français"],
   },
   "pinot-grigio": {
@@ -268,6 +288,8 @@ export const wineTranslations = {
     chipPairings: ["croustilles classiques salées", "croustilles crème sure et oignon"],
     whyChipsWork: "Son fruit net et son corps léger l’aident à accompagner les snacks crémeux ou salés.",
     expectation: "Vif, simple, et merveilleusement sans complication.",
+    cheesePairings: ["mozzarella fraîche","burrata","chèvre"],
+    whyCheeseWorks: "Le Pinot Grigio, léger et vif, fonctionne mieux avec des fromages frais, propres et crémeux.",
     lcboSearchTerms: ["Pinot Grigio", "Pinot Grigio italien", "Pinot Gris"],
   },
   riesling: {
@@ -275,6 +297,8 @@ export const wineTranslations = {
     chipPairings: ["croustilles épicées", "croustilles chili doux"],
     whyChipsWork: "Un peu de sucre calme le piquant pendant que l’acidité remet le palais à zéro.",
     expectation: "Un blanc électrique et fruité, parfois sec, parfois doucement sucré.",
+    cheesePairings: ["fromage bleu","muenster","fromage de chèvre affiné"],
+    whyCheeseWorks: "L’acidité du Riesling, parfois accompagnée d’un peu de douceur, peut gérer les fromages salés, crémeux, funky ou acidulés.",
     lcboSearchTerms: ["Riesling", "Riesling demi-sec", "Riesling allemand"],
   },
   gewurztraminer: {
@@ -282,6 +306,8 @@ export const wineTranslations = {
     chipPairings: ["croustilles chili doux", "croustilles au cari"],
     whyChipsWork: "Le fruit parfumé joue très bien avec les épices chaudes et une pointe de douceur.",
     expectation: "Aromatique, ample, floral, et plus théâtral que le blanc moyen.",
+    cheesePairings: ["munster","fromage à croûte lavée","cambozola"],
+    whyCheeseWorks: "Son fruit parfumé et ses épices tiennent tête aux fromages crémeux, aromatiques et un peu funky.",
     lcboSearchTerms: ["Gewürztraminer", "Gewurztraminer", "Gewürztraminer d’Alsace"],
   },
   chardonnay: {
@@ -289,6 +315,8 @@ export const wineTranslations = {
     chipPairings: ["croustilles au cheddar", "maïs soufflé beurré"],
     whyChipsWork: "La texture crémeuse et le fruit rond répondent aux saveurs beurrées et fromagées.",
     expectation: "Rond, réconfortant, parfois crémeux, parfois net selon la bouteille.",
+    cheesePairings: ["brie","camembert","triple-crème"],
+    whyCheeseWorks: "Sa texture ronde et ses notes de pomme et de beurre répondent bien aux fromages crémeux à croûte fleurie.",
     lcboSearchTerms: ["Chardonnay", "Chardonnay non boisé", "Bourgogne blanc"],
   },
   "chenin-blanc": {
@@ -296,6 +324,8 @@ export const wineTranslations = {
     chipPairings: ["croustilles salées", "craquelins au fromage de chèvre"],
     whyChipsWork: "La haute acidité et la texture cireuse rendent les snacks salés ronds et frais.",
     expectation: "Acidulé, texturé, et plus complexe qu’il n’en a l’air.",
+    cheesePairings: ["chèvre","brie","comté"],
+    whyCheeseWorks: "Sa haute acidité et sa texture cireuse ou miellée fonctionnent avec le chèvre acidulé comme avec les fromages fermes et noisettés.",
     lcboSearchTerms: ["Chenin Blanc", "Vouvray", "Chenin sud-africain"],
   },
   rose: {
@@ -303,6 +333,8 @@ export const wineTranslations = {
     chipPairings: ["croustilles all dressed", "croustilles nature salées"],
     whyChipsWork: "Son fruit rouge vif est assez flexible pour les assaisonnements salés et mélangés.",
     expectation: "Frais, rose, sec, et pratiquement fait pour grignoter sans cérémonie.",
+    cheesePairings: ["fromage de chèvre","feta","gouda jeune"],
+    whyCheeseWorks: "Le fruit rouge sec et la fraîcheur du rosé le rendent très flexible avec les fromages salés, acidulés ou doux.",
     lcboSearchTerms: ["rosé sec", "rosé de Provence", "rosé ontarien"],
   },
   "provence-rose": {
@@ -310,6 +342,8 @@ export const wineTranslations = {
     chipPairings: ["croustilles au sel de mer", "craquelins aux herbes"],
     whyChipsWork: "La légèreté sèche et citronnée rend les snacks salés et herbacés propres et estivaux.",
     expectation: "Pâle, sec, vif, très “terrasse ensoleillée” comme style de rosé.",
+    cheesePairings: ["fromage de chèvre","feta","mozzarella fraîche"],
+    whyCheeseWorks: "Un rosé pâle et délicat demande des fromages frais, salés et estivaux qui ne l’écrasent pas.",
     lcboSearchTerms: ["rosé de Provence", "rosé pâle sec", "rosé français"],
   },
   "sparkling-rose": {
@@ -317,6 +351,8 @@ export const wineTranslations = {
     chipPairings: ["croustilles kettle", "bouchées de poulet frit"],
     whyChipsWork: "Les bulles nettoient le sel et le gras pendant que le fruit rouge garde le tout ludique.",
     expectation: "Vif, pétillant, rose, et instantanément plus festif que prévu.",
+    cheesePairings: ["brie","chèvre","cheddar jeune"],
+    whyCheeseWorks: "Les bulles et l’acidité coupent le crémeux, pendant que le fruit rouge garde l’accord ludique.",
     lcboSearchTerms: ["rosé mousseux", "cava rosé", "vin mousseux rosé"],
   },
   "chillable-deep-rose": {
@@ -324,6 +360,8 @@ export const wineTranslations = {
     chipPairings: ["croustilles au paprika", "croustillants bruschetta tomate"],
     whyChipsWork: "Plus de couleur et de matière supportent la tomate et le paprika tout en restant frais.",
     expectation: "Plus foncé, plus juteux, et plus fait pour la table qu’un rosé pâle classique.",
+    cheesePairings: ["manchego","cheddar jeune","tomme"],
+    whyCheeseWorks: "Un rosé plus foncé a assez de fruit et de matière pour accompagner des fromages un peu plus fermes et noisettés.",
     lcboSearchTerms: ["clarete", "rosé foncé", "rosé espagnol"],
   },
   "gamay-beaujolais": {
@@ -331,6 +369,8 @@ export const wineTranslations = {
     chipPairings: ["croustilles ketchup", "bretzels salés"],
     whyChipsWork: "Le fruit rouge juteux et les tanins bas font ressortir les assaisonnements tomate-sucrés.",
     expectation: "Un rouge à rafraîchir, plein de cerise juteuse et sans prise de tête.",
+    cheesePairings: ["comté","gruyère","jarlsberg"],
+    whyCheeseWorks: "Son fruit rouge juteux et ses tanins bas vont très bien avec les fromages semi-fermes et noisettés.",
     lcboSearchTerms: ["Beaujolais", "Gamay", "Beaujolais Villages"],
   },
   "lambrusco-amabile": {
@@ -338,6 +378,8 @@ export const wineTranslations = {
     chipPairings: ["croustilles épicées", "croustillants de prosciutto"],
     whyChipsWork: "Les bulles rouges douces calment les épices et adorent les snacks salés et savoureux.",
     expectation: "Un rouge doux légèrement pétillant, froid, juteux, et parfait pour une table de grignotines.",
+    cheesePairings: ["parmigiano-reggiano","grana padano","gorgonzola dolce"],
+    whyCheeseWorks: "Les bulles rouges douces équilibrent les fromages durs salés et les bleus crémeux.",
     lcboSearchTerms: ["Lambrusco Amabile", "Lambrusco doux", "rouge doux mousseux"],
   },
   "sweet-red-blend": {
@@ -345,6 +387,8 @@ export const wineTranslations = {
     chipPairings: ["croustilles nacho", "bretzels enrobés de chocolat"],
     whyChipsWork: "Le fruit confituré et les tanins doux rendent les snacks salés, fromagés et chocolatés faciles.",
     expectation: "Souple, sucré, très fruité, et fait pour ceux qui ne veulent pas un rouge sec.",
+    cheesePairings: ["cheddar doux","colby","gouda"],
+    whyCheeseWorks: "Son fruit confituré et doux fonctionne mieux avec des fromages accessibles, crémeux et pas trop puissants.",
     lcboSearchTerms: ["assemblage rouge doux", "rouge sucré confituré", "Apothic red"],
   },
   "pinot-noir": {
@@ -352,6 +396,8 @@ export const wineTranslations = {
     chipPairings: ["croustilles à la truffe", "croustillants de champignons"],
     whyChipsWork: "Les notes terreuses accrochent les snacks savoureux pendant que le corps léger reste élégant.",
     expectation: "Fruit rouge soyeux et lumineux, avec un murmure terreux.",
+    cheesePairings: ["gruyère","comté","brie"],
+    whyCheeseWorks: "Son fruit rouge soyeux et ses notes terreuses vont bien avec les fromages noisettés et crémeux.",
     lcboSearchTerms: ["Pinot Noir", "Bourgogne rouge", "Pinot Noir ontarien"],
   },
   sangiovese: {
@@ -359,6 +405,8 @@ export const wineTranslations = {
     chipPairings: ["croustilles pizza", "craquelins tomate basilic"],
     whyChipsWork: "L’acidité tomate et les herbes rejoignent naturellement les snacks salés à l’italienne.",
     expectation: "Un rouge acidulé, savoureux, gourmand, avec un charme rustique.",
+    cheesePairings: ["pecorino affiné","grana padano","asiago affiné"],
+    whyCheeseWorks: "Son acidité, sa cerise, ses herbes et ses tanins adorent les fromages italiens salés et affinés.",
     lcboSearchTerms: ["Chianti", "Sangiovese", "vin rouge toscan"],
   },
   barbera: {
@@ -366,6 +414,8 @@ export const wineTranslations = {
     chipPairings: ["croustilles barbecue", "croustilles ketchup"],
     whyChipsWork: "Sa haute acidité empêche les snacks fumés et sucrés de devenir lourds.",
     expectation: "Juteux, vibrant, fruit noir, et dangereusement facile à boire.",
+    cheesePairings: ["fontina","taleggio","parmigiano-reggiano"],
+    whyCheeseWorks: "Sa haute acidité empêche les fromages italiens crémeux, noisettés ou salés de devenir lourds.",
     lcboSearchTerms: ["Barbera", "Barbera d’Asti", "vin rouge italien"],
   },
   "cabernet-franc": {
@@ -373,6 +423,8 @@ export const wineTranslations = {
     chipPairings: ["croustilles barbecue", "craquelins aux herbes"],
     whyChipsWork: "Le côté herbacé et le fruit rouge empêchent les snacks fumés-sucrés d’être lourds.",
     expectation: "Un rouge moyen avec petits fruits, fraîcheur, et une petite touche verte.",
+    cheesePairings: ["chèvre","comté","cheddar vieilli"],
+    whyCheeseWorks: "Son fruit rouge herbacé peut accompagner le chèvre acidulé comme les fromages plus fermes et noisettés.",
     lcboSearchTerms: ["Cabernet Franc", "Cabernet Franc de Loire", "Cabernet Franc ontarien"],
   },
   merlot: {
@@ -380,6 +432,8 @@ export const wineTranslations = {
     chipPairings: ["croustilles barbecue", "craquelins au cheddar"],
     whyChipsWork: "Le fruit moelleux et les tanins modérés vont bien avec les snacks fumés et fromagés.",
     expectation: "Souple, pruné, réconfortant, sans devenir trop intense.",
+    cheesePairings: ["gouda","gouda vieilli","fromage bleu doux"],
+    whyCheeseWorks: "Sa texture souple et prunée va bien avec les fromages caramélisés, noisettés ou légèrement bleus.",
     lcboSearchTerms: ["Merlot", "Bordeaux rive droite", "Merlot californien"],
   },
   malbec: {
@@ -387,6 +441,8 @@ export const wineTranslations = {
     chipPairings: ["croustilles barbecue fumé", "croustilles steakhouse"],
     whyChipsWork: "Le fruit noir et sa structure se marient bien avec la fumée et les gros assaisonnements.",
     expectation: "Sombre, souple, généreux, avec une petite énergie feu de camp.",
+    cheesePairings: ["cheddar vieilli","gouda fumé","provolone"],
+    whyCheeseWorks: "Son fruit noir et sa richesse fumée demandent des fromages avec du gras, du sel et du goût.",
     lcboSearchTerms: ["Malbec", "Malbec argentin", "Malbec de Mendoza"],
   },
   zinfandel: {
@@ -394,6 +450,8 @@ export const wineTranslations = {
     chipPairings: ["croustilles barbecue épicé", "croustilles nacho"],
     whyChipsWork: "Le fruit mûr adoucit les épices pendant que le corps suit les grosses saveurs.",
     expectation: "Gros, juteux, épicé, et absolument pas timide.",
+    cheesePairings: ["cheddar vieilli","pepper jack","gouda fumé"],
+    whyCheeseWorks: "Son fruit mûr et confituré et ses épices peuvent gérer les fromages forts, fumés ou épicés.",
     lcboSearchTerms: ["Zinfandel", "Zinfandel californien", "Primitivo"],
   },
   "syrah-shiraz": {
@@ -401,6 +459,8 @@ export const wineTranslations = {
     chipPairings: ["croustilles au poivre noir", "croustilles paprika fumé"],
     whyChipsWork: "Le poivre et la fumée du vin rappellent le snack sans se perdre.",
     expectation: "Sombre, poivré, savoureux, et excellent pour une soirée canapé dramatique.",
+    cheesePairings: ["gouda vieilli","fromage bleu","cheddar vieilli"],
+    whyCheeseWorks: "Son fruit noir poivré et sa profondeur savoureuse demandent des fromages puissants, salés et expressifs.",
     lcboSearchTerms: ["Syrah", "Shiraz", "Syrah du Rhône nord"],
   },
   "cabernet-sauvignon": {
@@ -408,6 +468,8 @@ export const wineTranslations = {
     chipPairings: ["croustilles style ribeye", "croustillants au cheddar vieilli"],
     whyChipsWork: "Les snacks gras et fromagés assouplissent les tanins et rendent le fruit noir plus velouté.",
     expectation: "Structuré, intense, et prêt pour quelqu’un qui veut un vrai gros rouge.",
+    cheesePairings: ["cheddar vieilli","gouda vieilli","comté"],
+    whyCheeseWorks: "Les fromages fermes et affinés ont assez de gras et d’intensité pour assouplir les tanins du Cabernet.",
     lcboSearchTerms: ["Cabernet Sauvignon", "Cabernet de Napa", "Cabernet Bordeaux"],
   },
   "cotes-du-rhone-gsm": {
@@ -415,6 +477,8 @@ export const wineTranslations = {
     chipPairings: ["croustilles au romarin", "croustilles barbecue"],
     whyChipsWork: "Son profil herbacé et poivré accompagne très bien les assaisonnements savoureux et les grignotines salées.",
     expectation: "Rustique, souple, et parfait pour les soupers entre amis.",
+    cheesePairings: ["comté","gruyère","tomme"],
+    whyCheeseWorks: "Son fruit rouge mûr et herbacé va naturellement avec les fromages alpins rustiques et noisettés.",
     lcboSearchTerms: ["Côtes du Rhône", "Cotes du Rhone", "assemblage GSM"],
   },
   grenache: {
@@ -422,6 +486,8 @@ export const wineTranslations = {
     chipPairings: ["croustilles au paprika", "croustilles chili doux"],
     whyChipsWork: "Le fruit mûr et les épices flattent les assaisonnements fumés-sucrés.",
     expectation: "Chaud, juteux, épicé, et très facile à vivre.",
+    cheesePairings: ["manchego","gouda","brie"],
+    whyCheeseWorks: "Son fruit chaud de fraise et ses épices fonctionnent avec les fromages de brebis noisettés et les textures crémeuses.",
     lcboSearchTerms: ["Grenache", "Garnacha", "vin du Rhône sud"],
   },
   mourvedre: {
@@ -429,6 +495,8 @@ export const wineTranslations = {
     chipPairings: ["croustilles fumées", "croustillants de bœuf séché"],
     whyChipsWork: "Les saveurs fumées et savoureuses font écho aux notes riches et carnées.",
     expectation: "Sombre, terreux, animal, et profondément savoureux.",
+    cheesePairings: ["manchego affiné","gouda fumé","fromage bleu"],
+    whyCheeseWorks: "Ce rouge sombre, savoureux et tannique a besoin de fromages salés, intenses et gras pour s’équilibrer.",
     lcboSearchTerms: ["Mourvèdre", "Mourvedre", "Monastrell"],
   },
   "nero-davola": {
@@ -436,6 +504,8 @@ export const wineTranslations = {
     chipPairings: ["croustilles à l’ail", "croustilles barbecue"],
     whyChipsWork: "Le fruit noir et la richesse herbacée aiment les snacks savoureux et costauds.",
     expectation: "Rouge sicilien corsé, avec fruit noir et chaleur méditerranéenne.",
+    cheesePairings: ["pecorino","caciocavallo","provolone affiné"],
+    whyCheeseWorks: "Son fruit noir sicilien et ses notes herbacées vont bien avec les fromages salés du sud de l’Italie.",
     lcboSearchTerms: ["Nero d’Avola", "Nero d'Avola", "vin rouge sicilien"],
   },
   carmenere: {
@@ -443,6 +513,8 @@ export const wineTranslations = {
     chipPairings: ["croustilles jalapeño", "croustilles barbecue"],
     whyChipsWork: "Les contours poivrés et herbacés s’accordent naturellement aux snacks fumés et épicés.",
     expectation: "Fruit noir souple avec une personnalité un peu verte et épicée.",
+    cheesePairings: ["gouda fumé","pepper jack","cheddar vieilli"],
+    whyCheeseWorks: "Ses notes de poivron, de paprika et de fruit noir vont bien avec les fromages fumés ou épicés.",
     lcboSearchTerms: ["Carménère", "Carmenere", "vin rouge chilien"],
   },
   "tempranillo-rioja": {
@@ -450,6 +522,8 @@ export const wineTranslations = {
     chipPairings: ["croustilles au paprika", "croustilles style jambon"],
     whyChipsWork: "Le chêne savoureux et la cerise flattent le paprika fumé et les saveurs de charcuterie.",
     expectation: "Poli, savoureux, et réconfortant sans devenir lourd.",
+    cheesePairings: ["manchego","idiazabal","cheddar vieilli"],
+    whyCheeseWorks: "Ses notes de cerise, d’aneth, de chêne et d’épices savoureuses sont idéales avec les fromages espagnols de brebis.",
     lcboSearchTerms: ["Rioja", "Tempranillo", "vin rouge espagnol"],
   },
   "montepulciano-dabruzzo": {
@@ -457,6 +531,8 @@ export const wineTranslations = {
     chipPairings: ["croustilles pizza", "croustillants pain à l’ail"],
     whyChipsWork: "Le fruit rouge italien et les herbes font chanter tomate, ail et fromage.",
     expectation: "Rouge facile, fruité et savoureux, parfait avec un souper de semaine.",
+    cheesePairings: ["pecorino","provolone","parmigiano-reggiano"],
+    whyCheeseWorks: "Son fruit rouge rustique, ses herbes et son acidité aiment les fromages italiens salés.",
     lcboSearchTerms: ["Montepulciano d’Abruzzo", "Montepulciano d'Abruzzo", "vin Montepulciano"],
   },
   nebbiolo: {
@@ -464,6 +540,8 @@ export const wineTranslations = {
     chipPairings: ["croustillants au fromage vieilli", "croustilles aux porcini"],
     whyChipsWork: "Le sel et l’umami aident à dompter les tanins pendant que les notes florales restent marquantes.",
     expectation: "Élégant mais accrocheur, avec roses, cerises et structure sérieuse.",
+    cheesePairings: ["parmigiano-reggiano","taleggio","gorgonzola"],
+    whyCheeseWorks: "Ses tanins et son acidité énormes demandent des fromages salés, gras et intenses pour calmer l’accroche.",
     lcboSearchTerms: ["Nebbiolo", "Barolo", "Barbaresco"],
   },
   xinomavro: {
@@ -471,6 +549,8 @@ export const wineTranslations = {
     chipPairings: ["croustilles aux olives", "croustilles à la truffe"],
     whyChipsWork: "Les snacks salés et savoureux assouplissent les tanins en rejoignant sa complexité terreuse.",
     expectation: "Un rouge grec puissant et savoureux, avec acidité tranchante et vraie structure.",
+    cheesePairings: ["feta","kefalotyri","manchego affiné"],
+    whyCheeseWorks: "Son acidité vive, ses tanins et ses notes savoureuses vont avec les fromages salés, fermes et d’inspiration grecque.",
     lcboSearchTerms: ["Xinomavro", "vin rouge grec", "vin de Naoussa"],
   },
   aglianico: {
@@ -478,6 +558,8 @@ export const wineTranslations = {
     chipPairings: ["croustilles fumées", "croustillants au fromage vieilli"],
     whyChipsWork: "Les gros tanins et la profondeur fumée ont besoin de snacks salés et gras.",
     expectation: "Sombre, volcanique, structuré, et fait pour boire lentement.",
+    cheesePairings: ["pecorino affiné","parmigiano-reggiano","provolone fumé"],
+    whyCheeseWorks: "Ses gros tanins, sa fumée et son fruit noir demandent des fromages durs, salés et très expressifs.",
     lcboSearchTerms: ["Aglianico", "Taurasi", "vin rouge du sud de l’Italie"],
   },
   tannat: {
@@ -485,6 +567,8 @@ export const wineTranslations = {
     chipPairings: ["croustilles steakhouse", "croustilles au poivre"],
     whyChipsWork: "Les tanins massifs demandent des snacks riches et salés pour trouver l’équilibre.",
     expectation: "Énorme, musclé, profondément structuré, pour les envies de grosses saveurs.",
+    cheesePairings: ["cheddar vieilli","gouda vieilli","parmigiano-reggiano"],
+    whyCheeseWorks: "Ses tanins massifs demandent des fromages affinés, fermes, salés et gras pour rendre le vin plus souple.",
     lcboSearchTerms: ["Tannat", "vin rouge uruguayen", "vin de Madiran"],
   },
   furmint: {
@@ -492,6 +576,8 @@ export const wineTranslations = {
     chipPairings: ["croustilles sel et vinaigre", "croustilles crème sure"],
     whyChipsWork: "L’acidité laser traverse les snacks crémeux et fait briller les croustilles acidulées.",
     expectation: "Pointu, minéral, très frais, et vraiment gratifiant.",
+    cheesePairings: ["chèvre","feta","gruyère"],
+    whyCheeseWorks: "Son acidité laser traverse le sel et le crémeux, pendant que ses notes minérales flattent les fromages noisettés.",
     lcboSearchTerms: ["Furmint", "Furmint sec", "vin blanc hongrois"],
   },
   moscato: {
@@ -499,6 +585,8 @@ export const wineTranslations = {
     chipPairings: ["croustilles épicées", "croustillants cannelle-sucre"],
     whyChipsWork: "Les bulles sucrées calment les épices et transforment les snacks salés en plaisir quasi dessert.",
     expectation: "Faible en alcool, doux, légèrement pétillant, et pur bonheur fruité.",
+    cheesePairings: ["gorgonzola dolce","mascarpone","ricotta"],
+    whyCheeseWorks: "Ses bulles sucrées vont avec les fromages doux et crémeux, et contrastent très bien avec le bleu salé.",
     lcboSearchTerms: ["Moscato d’Asti", "Moscato d'Asti", "vin mousseux doux"],
   },
   brachetto: {
@@ -506,6 +594,8 @@ export const wineTranslations = {
     chipPairings: ["bretzels au chocolat noir", "croustilles kettle aux petits fruits"],
     whyChipsWork: "Les bulles rouges douces adorent le croquant salé et les touches chocolatées.",
     expectation: "Un rouge dessert légèrement pétillant qui goûte les baies avec un clin d’œil.",
+    cheesePairings: ["ricotta","mascarpone","fromage de chèvre frais"],
+    whyCheeseWorks: "Ses bulles rouges sucrées aux fruits rouges fonctionnent mieux avec des fromages frais, crémeux et presque dessert.",
     lcboSearchTerms: ["Brachetto", "Brachetto d’Acqui", "rouge doux mousseux"],
   },
   port: {
@@ -513,6 +603,8 @@ export const wineTranslations = {
     chipPairings: ["croustilles au fromage bleu", "amandes au chocolat noir"],
     whyChipsWork: "La grande douceur et la richesse demandent un contraste salé, puissant ou amer.",
     expectation: "Doux, fort, velouté, et fait pour de tout petits verres.",
+    cheesePairings: ["stilton","fromage bleu","cheddar vieilli"],
+    whyCheeseWorks: "C’est le grand contraste classique : le Porto riche et sucré équilibre le bleu puissant et le cheddar affiné.",
     lcboSearchTerms: ["Porto", "Porto Ruby", "Porto Tawny"],
   },
   "dry-sherry": {
@@ -520,6 +612,8 @@ export const wineTranslations = {
     chipPairings: ["amandes marcona", "croustilles nature salées"],
     whyChipsWork: "Les snacks salés et noisettés rappellent le côté savoureux et vif du vin.",
     expectation: "Très sec, salin, noisetté, et glorieusement fait pour grignoter.",
+    cheesePairings: ["manchego","gouda vieilli","parmigiano-reggiano"],
+    whyCheeseWorks: "Son côté très sec, salin et noisetté fait écho aux fromages durs et affinés.",
     lcboSearchTerms: ["Fino Sherry", "Manzanilla Sherry", "Sherry sec"],
   },
   champagne: {
@@ -527,6 +621,8 @@ export const wineTranslations = {
     chipPairings: ["croustilles nature", "poulet frit"],
     whyChipsWork: "Les bulles et l’acidité nettoient le gras et le sel de la meilleure façon.",
     expectation: "Bulles vives, grillées, élégantes, qui rendent tout immédiatement festif.",
+    cheesePairings: ["brie","triple-crème","comté"],
+    whyCheeseWorks: "Les bulles et l’acidité coupent le crémeux, pendant que les notes grillées répondent aux saveurs noisettées.",
     lcboSearchTerms: ["Champagne", "Champagne Brut", "vin mousseux français"],
   },
   cava: {
@@ -534,6 +630,8 @@ export const wineTranslations = {
     chipPairings: ["croustilles salées", "maïs soufflé"],
     whyChipsWork: "Les bulles sèches et la fraîcheur citronnée rendent les snacks salés dangereusement addictifs.",
     expectation: "Bulles espagnoles abordables, fraîches, avec une touche grillée discrète.",
+    cheesePairings: ["manchego","brie","garrotxa"],
+    whyCheeseWorks: "Les bulles espagnoles sèches vont très bien avec le fromage de brebis salé, le brie crémeux et le chèvre ferme.",
     lcboSearchTerms: ["Cava", "vin mousseux espagnol", "Cava Brut"],
   },
   prosecco: {
@@ -541,6 +639,8 @@ export const wineTranslations = {
     chipPairings: ["croustilles nature", "croustilles chili doux"],
     whyChipsWork: "Les bulles fruitées et souples vont facilement avec les snacks salés et légèrement sucrés.",
     expectation: "Mousseux léger, amical, fruité, fait pour boire sans se compliquer.",
+    cheesePairings: ["burrata","mozzarella fraîche","triple-crème"],
+    whyCheeseWorks: "Ses bulles fruitées et souples fonctionnent mieux avec des fromages doux et crémeux qui ne l’écrasent pas.",
     lcboSearchTerms: ["Prosecco", "vin mousseux italien", "Prosecco extra dry"],
   },
   "orange-wine": {
@@ -548,6 +648,8 @@ export const wineTranslations = {
     chipPairings: ["croustilles au cari", "noix épicées"],
     whyChipsWork: "La texture tannique et le côté funky aiment les snacks très épicés.",
     expectation: "Blanc texturé, accrocheur et funky, fait avec contact pelliculaire façon vin rouge.",
+    cheesePairings: ["gouda vieilli","comté","fromage à croûte lavée"],
+    whyCheeseWorks: "Sa texture de macération, ses tanins et son côté funky demandent des fromages noisettés ou funky.",
     lcboSearchTerms: ["vin orange", "vin de macération", "vin ambré"],
   },
 } satisfies Partial<Record<WineId, WineTranslation>>;
