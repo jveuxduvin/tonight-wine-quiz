@@ -182,7 +182,7 @@ function App() {
 
   if (isAllWinesRoute()) {
     return (
-      <main className="min-h-screen overflow-hidden bg-navy text-ivory">
+      <main className="wine-shell min-h-screen overflow-hidden bg-navy text-ivory">
         <div className="doodle doodle-grapes" aria-hidden="true" />
         <div className="doodle doodle-spark" aria-hidden="true" />
 
@@ -225,7 +225,7 @@ function App() {
   }
 
   return (
-    <main className="min-h-screen overflow-hidden bg-navy text-ivory">
+    <main className="wine-shell min-h-screen overflow-hidden bg-navy text-ivory">
       <div className="doodle doodle-grapes" aria-hidden="true" />
       <div className="doodle doodle-spark" aria-hidden="true" />
 
