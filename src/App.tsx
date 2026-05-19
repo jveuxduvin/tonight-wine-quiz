@@ -1,4 +1,4 @@
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import {
   Beer,
   Cherry,
@@ -96,6 +96,8 @@ const defaultSurpriseAnswers: Required<QuizAnswers> = {
   crowd: "adventurous",
 };
 
+const POUR_ANIMATION_MS = 2100;
+
 function isAllWinesRoute() {
   return (
     window.location.pathname.endsWith("/all-wines") ||
@@ -109,12 +111,45 @@ function isComplete(answers: QuizAnswers): answers is Required<QuizAnswers> {
   );
 }
 
+function PourAnimation() {
+  return (
+    <section className="dream-enter grid flex-1 place-items-center py-10" aria-live="polite">
+      <div className="pour-card sketch-card w-full max-w-md px-6 py-9 text-center shadow-sketch">
+        <div className="wine-loader" aria-hidden="true">
+          <div className="loader-bottle">
+            <div className="loader-bottle-neck" />
+            <div className="loader-bottle-body" />
+          </div>
+
+          <div className="loader-pour" />
+
+          <div className="loader-glass">
+            <div className="loader-wine" />
+            <div className="loader-shine" />
+          </div>
+
+          <div className="loader-stem" />
+          <div className="loader-base" />
+        </div>
+        <p className="mt-7 font-body text-xs font-medium uppercase tracking-[0.24em] text-cork">
+          One moment
+        </p>
+        <h2 className="mt-2 font-sketch text-3xl font-normal text-ivory">
+          Pouring your picks
+        </h2>
+      </div>
+    </section>
+  );
+}
+
 function App() {
   const [started, setStarted] = useState(false);
   const [step, setStep] = useState(0);
   const [answers, setAnswers] = useState<QuizAnswers>({});
   const [showResults, setShowResults] = useState(false);
+  const [isPouring, setIsPouring] = useState(false);
   const [surpriseResults, setSurpriseResults] = useState<ScoredWine[] | null>(null);
+  const pourTimer = useRef<ReturnType<typeof window.setTimeout> | null>(null);
 
   const activeQuestion = questions[step];
   const recommendations = useMemo(() => {
@@ -125,6 +160,21 @@ function App() {
     const completed = isComplete(answers) ? answers : defaultSurpriseAnswers;
     return getTopWineRecommendations(wines, completed);
   }, [answers, surpriseResults]);
+
+  useEffect(() => {
+    return () => {
+      if (pourTimer.current) {
+        window.clearTimeout(pourTimer.current);
+      }
+    };
+  }, []);
+
+  function clearPourTimer() {
+    if (pourTimer.current) {
+      window.clearTimeout(pourTimer.current);
+      pourTimer.current = null;
+    }
+  }
 
   function updateAnswer(value: string) {
     setSurpriseResults(null);
@@ -148,7 +198,13 @@ function App() {
 
   function goNext() {
     if (step === questions.length - 1) {
-      setShowResults(true);
+      clearPourTimer();
+      setIsPouring(true);
+      pourTimer.current = window.setTimeout(() => {
+        setIsPouring(false);
+        setShowResults(true);
+        pourTimer.current = null;
+      }, POUR_ANIMATION_MS);
       return;
     }
 
@@ -160,14 +216,27 @@ function App() {
   }
 
   function retakeQuiz() {
+    clearPourTimer();
     setAnswers({});
     setStep(0);
     setShowResults(false);
+    setIsPouring(false);
     setSurpriseResults(null);
     setStarted(true);
   }
 
+  function goHome() {
+    clearPourTimer();
+    setAnswers({});
+    setStep(0);
+    setShowResults(false);
+    setIsPouring(false);
+    setSurpriseResults(null);
+    setStarted(false);
+  }
+
   function surpriseMe() {
+    clearPourTimer();
     const shuffled = [...wines].sort(() => Math.random() - 0.5);
     setSurpriseResults(
       shuffled.slice(0, 3).map((wine, index) => ({
@@ -176,6 +245,7 @@ function App() {
       })),
     );
     setAnswers(defaultSurpriseAnswers);
+    setIsPouring(false);
     setStarted(true);
     setShowResults(true);
   }
@@ -229,12 +299,17 @@ function App() {
 
       <div className="mx-auto flex min-h-screen w-full max-w-5xl flex-col px-4 py-5 sm:px-6 lg:px-8">
         <header className="flex items-center justify-between gap-3 py-2">
-          <div className="flex items-center gap-2 font-sketch text-lg font-normal tracking-[0.08em] text-ivory">
+          <button
+            type="button"
+            onClick={goHome}
+            className="flex items-center gap-2 font-sketch text-lg font-normal tracking-[0.08em] text-ivory transition hover:text-cork"
+            aria-label="Go to home"
+          >
             <span className="grid size-10 place-items-center rounded-full border border-cork bg-ivory/[0.06] text-cork shadow-soft">
               <Wine size={22} />
             </span>
             Tonight Wine
-          </div>
+          </button>
           <button type="button" onClick={surpriseMe} className="sketch-button bg-transparent text-sm text-ivory">
             <Shuffle size={17} />
             Surprise me
@@ -260,11 +335,11 @@ function App() {
                   Answer five quick wine mood questions and get three bottle styles,
                   tasting notes, and chips that make sense after the wine is chosen.
                 </p>
-                <div className="mt-7 flex flex-col justify-center gap-3 sm:flex-row">
+                <div className="mt-7 flex flex-col justify-center gap-3 sm:flex-row sm:gap-4">
                   <button
                     type="button"
                     onClick={() => setStarted(true)}
-                    className="sketch-button justify-center bg-ivory px-6 py-4 text-navy"
+                    className="hero-action hero-action-primary justify-center px-6 py-4"
                   >
                     <Sparkles size={19} />
                     Start quiz
@@ -272,7 +347,7 @@ function App() {
                   <button
                     type="button"
                     onClick={surpriseMe}
-                    className="sketch-button justify-center bg-transparent px-6 py-4 text-ivory"
+                    className="hero-action hero-action-secondary justify-center px-6 py-4"
                   >
                     <Shuffle size={19} />
                     Surprise me
@@ -281,6 +356,8 @@ function App() {
               </div>
             </div>
           </section>
+        ) : isPouring ? (
+          <PourAnimation />
         ) : showResults ? (
           <section className="dream-enter py-7">
             <div className="mb-6 flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">

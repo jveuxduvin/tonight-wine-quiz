@@ -83,6 +83,86 @@ button {
     transform: translateY(2px);
   }
 
+  .hero-action {
+    align-items: center;
+    border-radius: 999px;
+    display: inline-flex;
+    font-family: theme("fontFamily.sketch");
+    font-size: 1rem;
+    font-weight: 600;
+    gap: 0.55rem;
+    letter-spacing: 0.01em;
+    min-height: 3.45rem;
+    min-width: 10.5rem;
+    overflow: hidden;
+    position: relative;
+    transition:
+      border-color 260ms ease,
+      box-shadow 260ms ease,
+      color 260ms ease,
+      transform 260ms cubic-bezier(0.16, 0.84, 0.28, 1);
+  }
+
+  .hero-action::before {
+    background: linear-gradient(110deg, transparent 0%, rgba(255, 255, 255, 0.36) 46%, transparent 64%);
+    content: "";
+    height: 140%;
+    left: -80%;
+    opacity: 0;
+    position: absolute;
+    top: -20%;
+    transform: rotate(8deg);
+    transition:
+      left 520ms cubic-bezier(0.16, 0.84, 0.28, 1),
+      opacity 220ms ease;
+    width: 55%;
+  }
+
+  .hero-action:hover {
+    transform: translateY(-2px);
+  }
+
+  .hero-action:hover::before {
+    left: 126%;
+    opacity: 0.55;
+  }
+
+  .hero-action:active {
+    transform: translateY(1px) scale(0.99);
+  }
+
+  .hero-action-primary {
+    background:
+      radial-gradient(circle at 28% 12%, rgba(255, 255, 255, 0.52), transparent 34%),
+      linear-gradient(180deg, #fff4dd 0%, #f1dfbf 100%);
+    border: 1px solid rgba(255, 244, 221, 0.9);
+    box-shadow:
+      0 18px 46px rgba(0, 0, 0, 0.28),
+      0 0 34px rgba(202, 160, 100, 0.16);
+    color: theme("colors.navy");
+  }
+
+  .hero-action-primary:hover {
+    box-shadow:
+      0 22px 54px rgba(0, 0, 0, 0.34),
+      0 0 46px rgba(202, 160, 100, 0.24);
+  }
+
+  .hero-action-secondary {
+    background:
+      linear-gradient(180deg, rgba(245, 237, 223, 0.09), rgba(245, 237, 223, 0.035)),
+      rgba(1, 7, 20, 0.18);
+    border: 1px solid rgba(245, 237, 223, 0.42);
+    box-shadow: inset 0 1px 0 rgba(245, 237, 223, 0.09), 0 14px 34px rgba(0, 0, 0, 0.18);
+    color: theme("colors.ivory");
+  }
+
+  .hero-action-secondary:hover {
+    border-color: rgba(202, 160, 100, 0.74);
+    box-shadow: inset 0 1px 0 rgba(245, 237, 223, 0.12), 0 18px 42px rgba(0, 0, 0, 0.24);
+    color: #fff4dd;
+  }
+
   .mini-heading {
     align-items: center;
     color: theme("colors.cork");
@@ -107,6 +187,164 @@ button {
     line-height: 1.2;
     padding: 0.4rem 0.66rem;
   }
+}
+
+.pour-card {
+  overflow: hidden;
+}
+
+.wine-loader {
+  --loader-glass: rgba(245, 237, 223, 0.72);
+  --loader-wine: #8f1d3b;
+  --loader-wine-dark: #4f0b1d;
+  height: 220px;
+  margin: 0 auto;
+  position: relative;
+  width: 220px;
+}
+
+.loader-bottle {
+  animation: tilt-bottle 2100ms ease-in-out both;
+  height: 125px;
+  left: 36px;
+  position: absolute;
+  top: 28px;
+  transform-origin: 50% 90%;
+  width: 34px;
+  z-index: 3;
+}
+
+.loader-bottle-neck {
+  background: #132b21;
+  border: 1px solid rgba(202, 160, 100, 0.66);
+  border-radius: 6px 6px 2px 2px;
+  height: 45px;
+  left: 11px;
+  position: absolute;
+  top: 0;
+  width: 12px;
+}
+
+.loader-bottle-body {
+  background:
+    linear-gradient(90deg, rgba(245, 237, 223, 0.18), transparent 38%),
+    #11291f;
+  border: 1px solid rgba(202, 160, 100, 0.66);
+  border-radius: 14px 14px 8px 8px;
+  height: 82px;
+  left: 2px;
+  position: absolute;
+  top: 38px;
+  width: 30px;
+}
+
+.loader-bottle-body::after {
+  background: #e6c99a;
+  border-radius: 3px;
+  content: "";
+  height: 28px;
+  left: 7px;
+  opacity: 0.9;
+  position: absolute;
+  top: 24px;
+  width: 16px;
+}
+
+.loader-pour {
+  animation: pour-wine 2100ms ease-in-out both;
+  background: linear-gradient(var(--loader-wine), var(--loader-wine-dark));
+  border-radius: 999px;
+  height: 62px;
+  left: 145px;
+  opacity: 0;
+  position: absolute;
+  top: 88px;
+  transform: rotate(-12deg) scaleY(0);
+  transform-origin: top;
+  width: 7px;
+  z-index: 2;
+}
+
+.loader-glass {
+  background: linear-gradient(90deg, rgba(245, 237, 223, 0.18), rgba(245, 237, 223, 0.04));
+  border: 3px solid var(--loader-glass);
+  border-radius: 7px 7px 28px 28px;
+  border-top: 2px solid var(--loader-glass);
+  height: 64px;
+  left: 139px;
+  overflow: hidden;
+  position: absolute;
+  top: 104px;
+  width: 43px;
+  z-index: 1;
+}
+
+.loader-glass::before {
+  background: rgba(245, 237, 223, 0.05);
+  border: 2px solid var(--loader-glass);
+  border-radius: 50%;
+  content: "";
+  height: 10px;
+  left: -4px;
+  position: absolute;
+  top: -5px;
+  width: 45px;
+}
+
+.loader-wine {
+  animation: fill-loader-glass 2100ms ease-in-out both;
+  background:
+    radial-gradient(circle at 35% 20%, rgba(245, 237, 223, 0.2), transparent 18%),
+    linear-gradient(var(--loader-wine), var(--loader-wine-dark));
+  bottom: 0;
+  height: 0%;
+  left: 0;
+  position: absolute;
+  width: 100%;
+}
+
+.loader-wine::before {
+  animation: wine-surface 2100ms ease-in-out both;
+  background: rgba(143, 29, 59, 0.95);
+  border-radius: 50%;
+  content: "";
+  height: 14px;
+  left: -10%;
+  position: absolute;
+  top: -7px;
+  width: 120%;
+}
+
+.loader-shine {
+  background: rgba(245, 237, 223, 0.32);
+  border-radius: 999px;
+  height: 29px;
+  left: 8px;
+  position: absolute;
+  top: 14px;
+  transform: rotate(12deg);
+  width: 5px;
+}
+
+.loader-stem {
+  background: var(--loader-glass);
+  border-radius: 999px;
+  height: 31px;
+  left: 158px;
+  position: absolute;
+  top: 166px;
+  width: 5px;
+}
+
+.loader-base {
+  border: 3px solid var(--loader-glass);
+  border-radius: 50%;
+  border-top: 0;
+  height: 8px;
+  left: 141px;
+  position: absolute;
+  top: 195px;
+  width: 38px;
 }
 
 .doodle {
@@ -190,9 +428,79 @@ main > div:not(.doodle) {
   }
 }
 
+@keyframes tilt-bottle {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  18%,
+  72% {
+    transform: rotate(58deg);
+  }
+
+  100% {
+    transform: rotate(0deg);
+  }
+}
+
+@keyframes pour-wine {
+  0%,
+  23% {
+    opacity: 0;
+    transform: rotate(-12deg) scaleY(0);
+  }
+
+  30%,
+  72% {
+    opacity: 1;
+    transform: rotate(-12deg) scaleY(1);
+  }
+
+  82%,
+  100% {
+    opacity: 0;
+    transform: rotate(-12deg) scaleY(0);
+  }
+}
+
+@keyframes fill-loader-glass {
+  0%,
+  25% {
+    height: 0%;
+  }
+
+  78%,
+  100% {
+    height: 68%;
+  }
+}
+
+@keyframes wine-surface {
+  0%,
+  25% {
+    transform: rotate(0deg);
+  }
+
+  48% {
+    transform: rotate(-3deg);
+  }
+
+  70% {
+    transform: rotate(3deg);
+  }
+
+  100% {
+    transform: rotate(0deg);
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .dream-enter,
-  .dream-option {
+  .dream-option,
+  .loader-bottle,
+  .loader-pour,
+  .loader-wine,
+  .loader-wine::before {
     animation: none;
   }
 
