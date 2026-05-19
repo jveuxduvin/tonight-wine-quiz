@@ -106,17 +106,6 @@ button {
   z-index: 0;
 }
 
-.doodle-grapes {
-  border: 1px solid rgba(245, 237, 223, 0.34);
-  border-bottom: 0;
-  border-radius: 999px 999px 0 0;
-  height: min(54vw, 420px);
-  opacity: 0.18;
-  right: max(-100px, -8vw);
-  top: 92px;
-  width: min(34vw, 260px);
-}
-
 .doodle-spark {
   background:
     radial-gradient(circle at 68% 28%, rgba(245, 237, 223, 0.46) 0 2px, transparent 3px),
