@@ -64,6 +64,14 @@ function crowdScore(adventurousness: number, crowd: CrowdMode): number {
   return Math.max(0, 2 - closest);
 }
 
+function styleSpecificAdjustment(wine: Wine, answers: Required<QuizAnswers>): number {
+  if (wine.id === "sweet-red-blend" && answers.dryness !== "sweet") {
+    return -5;
+  }
+
+  return 0;
+}
+
 export function scoreWine(wine: Wine, answers: Required<QuizAnswers>): ScoredWine {
   let score = 0;
 
@@ -100,6 +108,8 @@ export function scoreWine(wine: Wine, answers: Required<QuizAnswers>): ScoredWin
   if (answers.vibe === "cozy" && wine.body >= 3) {
     score += 0.75;
   }
+
+  score += styleSpecificAdjustment(wine, answers);
 
   return { ...wine, score };
 }
