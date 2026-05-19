@@ -413,7 +413,7 @@ export const wineTranslations = {
   "cotes-du-rhone-gsm": {
     flavourNotes: ["framboise", "mûre", "romarin", "épices de pâtisserie", "lavande"],
     chipPairings: ["croustilles au romarin", "croustilles barbecue"],
-    whyChipsWork: "Le fruit herbacé et poivré adore les assaisonnements savoureux et le grignotage relax.",
+    whyChipsWork: "Son profil herbacé et poivré accompagne très bien les assaisonnements savoureux et les grignotines salées.",
     expectation: "Rustique, souple, et parfait pour les soupers entre amis.",
     lcboSearchTerms: ["Côtes du Rhône", "Cotes du Rhone", "assemblage GSM"],
   },
