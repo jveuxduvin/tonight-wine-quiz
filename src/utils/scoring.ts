@@ -38,7 +38,13 @@ function sweetnessPreferenceScore(wine: Wine, dryness: DrynessPreference): numbe
   let score = closenessScore(wine.sweetness, target);
 
   if (dryness === "sweet") {
-    score += wine.sweetness >= 4 ? 4 : -4;
+    if (wine.sweetness >= 4) {
+      score += 4;
+    } else if (wine.sweetness === 3) {
+      score += 2;
+    } else {
+      score -= 4;
+    }
   }
 
   if (dryness === "dry" && wine.sweetness >= 4) {
