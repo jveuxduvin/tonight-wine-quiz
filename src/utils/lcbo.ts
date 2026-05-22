@@ -47,6 +47,18 @@ export const lcboSearchQueries: Record<string, string> = {
   cava: "Cava",
   prosecco: "Prosecco",
   "orange-wine": "orange wine",
+  viognier: "Viognier",
+  verdejo: "Verdejo",
+  picpoul: "Picpoul",
+  fiano: "Fiano",
+  godello: "Godello",
+  falanghina: "Falanghina",
+  mencia: "Mencia",
+  "touriga-nacional": "Touriga Nacional",
+  negroamaro: "Negroamaro",
+  dolcetto: "Dolcetto",
+  blaufrankisch: "Blaufrankisch",
+  zweigelt: "Zweigelt",
 };
 
 export function getLcboSearchUrl(wineId: string): string {

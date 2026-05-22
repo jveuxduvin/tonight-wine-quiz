@@ -191,4 +191,53 @@ export const cheesePairingsByWineId = {
     cheesePairings: ["aged gouda", "comté", "washed-rind cheese"],
     whyCheeseWorks: "Skin-contact texture, tannin, and savoury funk need nutty or funky cheeses.",
   },
+
+  viognier: {
+    cheesePairings: ["brie", "camembert", "triple-cream cheese"],
+    whyCheeseWorks: "Viognier's full body, plush stone fruit, floral notes, and soft acidity work best with rich, creamy cheeses that do not taste too sharp.",
+  },
+  verdejo: {
+    cheesePairings: ["chèvre", "feta", "manchego"],
+    whyCheeseWorks: "Verdejo's limey acidity and subtle bitterness cut through salty, tangy cheeses and keep the pairing fresh.",
+  },
+  picpoul: {
+    cheesePairings: ["chèvre", "feta", "fresh goat cheese"],
+    whyCheeseWorks: "Picpoul's very high acidity, lemony edge, and saline finish love fresh, salty, tangy cheeses.",
+  },
+  fiano: {
+    cheesePairings: ["pecorino", "burrata", "aged provolone"],
+    whyCheeseWorks: "Fiano's medium-light body, nutty notes, herbs, and citrus peel work with both creamy fresh cheese and savoury aged Italian cheeses.",
+  },
+  godello: {
+    cheesePairings: ["manchego", "chèvre", "gruyère"],
+    whyCheeseWorks: "Godello's citrus, saline minerality, medium body, and slight nuttiness pair well with tangy goat cheese and nutty semi-firm cheeses.",
+  },
+  falanghina: {
+    cheesePairings: ["fresh mozzarella", "ricotta", "pecorino"],
+    whyCheeseWorks: "Falanghina's lemon, peach, almond, and mineral notes work best with fresh creamy cheeses or salty Italian sheep cheese.",
+  },
+  mencia: {
+    cheesePairings: ["manchego", "idiazabal", "aged goat cheese"],
+    whyCheeseWorks: "Mencía's tart red fruit, peppery notes, minerality, and moderate tannin are a natural fit for cured, nutty, semi-firm cheeses.",
+  },
+  "touriga-nacional": {
+    cheesePairings: ["blue cheese", "aged cheddar", "aged gouda"],
+    whyCheeseWorks: "Touriga Nacional's massive tannins, dark fruit, and floral intensity need bold, salty, fatty cheeses to soften the structure.",
+  },
+  negroamaro: {
+    cheesePairings: ["aged provolone", "pecorino", "caciocavallo"],
+    whyCheeseWorks: "Negroamaro's dark fruit, dried herbs, rustic tannin, and caramelized-food friendliness match savoury southern Italian-style cheeses.",
+  },
+  dolcetto: {
+    cheesePairings: ["fontina", "taleggio", "toma"],
+    whyCheeseWorks: "Dolcetto's dark fruit, lower acidity, softer tannin, and bitter almond edge work well with creamy, earthy northern Italian cheeses.",
+  },
+  blaufrankisch: {
+    cheesePairings: ["emmental", "gruyère", "aged gouda"],
+    whyCheeseWorks: "Blaufränkisch's pepper, dark fruit, acidity, and medium-high tannin pair well with nutty Alpine-style cheeses and aged gouda.",
+  },
+  zweigelt: {
+    cheesePairings: ["emmental", "havarti", "young gouda"],
+    whyCheeseWorks: "Zweigelt's bright cherry fruit, low tannin, and picnic-red freshness work best with mild, nutty, easygoing cheeses.",
+  },
 } satisfies Record<string, { cheesePairings: string[]; whyCheeseWorks: string }>;
