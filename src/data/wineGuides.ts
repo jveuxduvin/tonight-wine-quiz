@@ -543,6 +543,18 @@ export const wineGuidesByWineId = {
     ],
     buyingTip: "Ruby or LBV for chocolate; Tawny for nuts, caramel, and cheese.",
   }),
+  icewine: guide({
+    summary: "A very sweet cold-climate dessert wine with honeyed fruit and bright balancing acidity.",
+    whatItIs:
+      "Icewine is made from grapes that freeze naturally on the vine, concentrating sugar, acidity, and flavour. Ontario is one of the most important places to look for it.",
+    whereToLook: "Search Icewine, Ontario Icewine, Vidal Icewine, Riesling Icewine, or Niagara Icewine.",
+    regions: [
+      { label: "Canada - Ontario / Niagara", expect: "Classic rich sweetness with apricot, peach, honey, citrus, and vivid acidity.", searchTerms: ["Ontario Icewine", "Niagara Icewine"] },
+      { label: "Vidal Icewine", expect: "Usually lush and tropical with honey, peach, apricot, and candied citrus.", searchTerms: ["Vidal Icewine"] },
+      { label: "Riesling Icewine", expect: "More electric and citrus-driven, with sharper acidity and a lighter feel.", searchTerms: ["Riesling Icewine"] },
+    ],
+    buyingTip: "Buy a small bottle and pour tiny glasses; the sweetness is intense, so a little goes a long way.",
+  }),
   "dry-sherry": guide({
     summary: "Bone-dry, salty, nutty, briny, and one of the best wines for snacks.",
     whatItIs:

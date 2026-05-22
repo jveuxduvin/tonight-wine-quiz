@@ -817,6 +817,15 @@ export const wineTranslations = {
     whyCheeseWorks: "C’est le grand contraste classique : le Porto riche et sucré équilibre le bleu puissant et le cheddar affiné.",
     lcboSearchTerms: ["Porto", "Porto Ruby", "Porto Tawny"],
   },
+  icewine: {
+    flavourNotes: ["confiture d’abricot", "miel", "pêche", "agrume confit", "pomme cuite"],
+    chipPairings: ["croustilles kettle", "croustillants cannelle-sucre"],
+    whyChipsWork: "Sa douceur intense adore le croquant salé, pendant que l’acidité garde l’accord léger.",
+    expectation: "Très doux, miellé, luxuriant, mais gardé vif par une acidité de climat froid.",
+    cheesePairings: ["fromage bleu", "triple-crème", "cheddar vieilli"],
+    whyCheeseWorks: "La grande douceur et l’acidité de l’icewine équilibrent le bleu salé, les fromages très crémeux et le cheddar affiné.",
+    lcboSearchTerms: ["Icewine", "Icewine ontarien", "Icewine de Vidal"],
+  },
   "dry-sherry": {
     flavourNotes: ["olive verte","sel marin","amande","zeste de citron","levain"],
     chipPairings: ["amandes marcona", "croustilles nature salées"],

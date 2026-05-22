@@ -171,6 +171,10 @@ export const cheesePairingsByWineId = {
     cheesePairings: ["stilton", "blue cheese", "aged cheddar"],
     whyCheeseWorks: "Classic sweet-salty contrast: rich Port balances pungent blue and sharp aged cheese.",
   },
+  icewine: {
+    cheesePairings: ["blue cheese", "triple-cream cheese", "aged cheddar"],
+    whyCheeseWorks: "Icewine's intense sweetness and acidity balance salty blue cheese, rich creamy cheese, and sharp aged cheddar.",
+  },
   "dry-sherry": {
     cheesePairings: ["manchego", "aged gouda", "parmigiano-reggiano"],
     whyCheeseWorks: "Bone-dry salty nuttiness mirrors hard aged cheeses beautifully.",

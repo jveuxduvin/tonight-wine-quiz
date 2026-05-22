@@ -42,6 +42,7 @@ export const lcboSearchQueries: Record<string, string> = {
   moscato: "Moscato",
   brachetto: "Brachetto",
   port: "Port",
+  icewine: "Ontario Icewine",
   "dry-sherry": "Fino Sherry",
   champagne: "Champagne",
   cava: "Cava",
