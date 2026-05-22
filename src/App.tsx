@@ -25,6 +25,7 @@ import type {
   DrynessPreference,
   QuizAnswers,
   ScoredWine,
+  WineCategory,
   Vibe,
 } from "./types";
 import { getTopWineRecommendations } from "./utils/scoring";
@@ -103,6 +104,40 @@ const defaultSurpriseAnswers: Required<QuizAnswers> = {
 
 const POUR_ANIMATION_MS = 2100;
 
+type TraitRangeFilter = "any" | "low" | "medium" | "mediumPlus" | "high";
+type AlcoholFilter = "any" | "low" | "medium" | "high";
+type CategoryFilter = "any" | WineCategory;
+
+type WineFilters = {
+  category: CategoryFilter;
+  sweetness: TraitRangeFilter;
+  body: TraitRangeFilter;
+  tannin: TraitRangeFilter;
+  acidity: TraitRangeFilter;
+  alcohol: AlcoholFilter;
+};
+
+const defaultWineFilters: WineFilters = {
+  category: "any",
+  sweetness: "any",
+  body: "any",
+  tannin: "any",
+  acidity: "any",
+  alcohol: "any",
+};
+
+const traitRangeFilterOptions: TraitRangeFilter[] = ["any", "low", "medium", "mediumPlus", "high"];
+const alcoholFilterOptions: AlcoholFilter[] = ["any", "low", "medium", "high"];
+const categoryFilterOptions: CategoryFilter[] = [
+  "any",
+  "white",
+  "rose",
+  "sparkling",
+  "red",
+  "dessert",
+  "orange",
+];
+
 function isAllWinesRoute() {
   return (
     window.location.pathname.endsWith("/all-wines") ||
@@ -113,6 +148,97 @@ function isAllWinesRoute() {
 function isComplete(answers: QuizAnswers): answers is Required<QuizAnswers> {
   return Boolean(
     answers.category && answers.vibe && answers.dryness && answers.body && answers.crowd,
+  );
+}
+
+function getTraitRangeFilterLabel(
+  value: TraitRangeFilter,
+  filters: (typeof ui)[Language]["filters"],
+) {
+  if (value === "any") {
+    return filters.any;
+  }
+
+  const rangeLabels = {
+    low: filters.ranges.low,
+    medium: filters.ranges.medium,
+    mediumPlus: filters.ranges.mediumPlus,
+    high: filters.ranges.high,
+  } satisfies Record<Exclude<TraitRangeFilter, "any">, string>;
+
+  return rangeLabels[value];
+}
+
+function matchesTraitRange(value: number, filter: TraitRangeFilter) {
+  switch (filter) {
+    case "any":
+      return true;
+    case "low":
+      return value <= 1;
+    case "medium":
+      return value === 2;
+    case "mediumPlus":
+      return value === 3;
+    case "high":
+      return value >= 4;
+  }
+}
+
+function filterWines(allWines: typeof wines, filters: WineFilters) {
+  return allWines.filter((wine) => {
+    if (filters.category !== "any" && wine.category !== filters.category) {
+      return false;
+    }
+
+    if (filters.alcohol !== "any" && wine.alcohol !== filters.alcohol) {
+      return false;
+    }
+
+    const numericFilters = [
+      ["sweetness", wine.sweetness],
+      ["body", wine.body],
+      ["tannin", wine.tannin],
+      ["acidity", wine.acidity],
+    ] as const;
+
+    return numericFilters.every(([key, value]) => {
+      return matchesTraitRange(value, filters[key]);
+    });
+  });
+}
+
+type FilterSelectProps<T extends string> = {
+  label: string;
+  value: T;
+  options: readonly T[];
+  getLabel: (value: T) => string;
+  onChange: (value: T) => void;
+};
+
+function FilterSelect<T extends string>({
+  label,
+  value,
+  options,
+  getLabel,
+  onChange,
+}: FilterSelectProps<T>) {
+  return (
+    <label className="grid gap-2">
+      <span className="font-body text-xs font-normal uppercase tracking-[0.16em] text-cork">
+        {label}
+      </span>
+      <select
+        value={value}
+        onChange={(event) => onChange(event.target.value as T)}
+        className="min-h-11 rounded-2xl border border-ivory/22 bg-[#0d1c31] px-3 py-2 font-body text-sm font-light text-ivory outline-none transition hover:border-cork/70 focus:border-cork focus:ring-2 focus:ring-cork/30"
+      >
+        {options.map((option) => (
+          <option key={option} value={option} className="bg-[#0d1c31] text-ivory">
+            {getLabel(option)}
+          </option>
+        ))}
+      </select>
+    </label>
   );
 }
 
@@ -158,6 +284,7 @@ function App() {
   const [showResults, setShowResults] = useState(false);
   const [isPouring, setIsPouring] = useState(false);
   const [surpriseResults, setSurpriseResults] = useState<ScoredWine[] | null>(null);
+  const [wineFilters, setWineFilters] = useState<WineFilters>(defaultWineFilters);
   const pourTimer = useRef<ReturnType<typeof window.setTimeout> | null>(null);
 
   const copy = ui[language];
@@ -176,6 +303,10 @@ function App() {
     [language, recommendations],
   );
   const displayedWines = useMemo(() => localizeWines(wines, language), [language]);
+  const filteredWines = useMemo(
+    () => filterWines(displayedWines, wineFilters),
+    [displayedWines, wineFilters],
+  );
 
   useEffect(() => {
     return () => {
@@ -313,8 +444,90 @@ function App() {
               </p>
             </div>
 
+            <section className="mb-7 sketch-card p-4 shadow-sketch sm:p-5">
+              <div className="mb-4 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+                <div>
+                  <h2 className="font-sketch text-2xl font-normal text-ivory">
+                    {copy.filters.title}
+                  </h2>
+                  <p className="mt-1 text-sm font-light text-ivory/68">
+                    {copy.filters.showing} {filteredWines.length} {copy.filters.of}{" "}
+                    {displayedWines.length} {copy.filters.wines}
+                  </p>
+                </div>
+                <button
+                  type="button"
+                  onClick={() => setWineFilters(defaultWineFilters)}
+                  className="sketch-button justify-center bg-transparent text-ivory"
+                >
+                  {copy.filters.clear}
+                </button>
+              </div>
+
+              <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+                <FilterSelect
+                  label={copy.filters.category}
+                  value={wineFilters.category}
+                  options={categoryFilterOptions}
+                  getLabel={(value) =>
+                    value === "any" ? copy.filters.any : copy.categories[value]
+                  }
+                  onChange={(value) =>
+                    setWineFilters((current) => ({ ...current, category: value }))
+                  }
+                />
+                <FilterSelect
+                  label={copy.filters.sweetness}
+                  value={wineFilters.sweetness}
+                  options={traitRangeFilterOptions}
+                  getLabel={(value) => getTraitRangeFilterLabel(value, copy.filters)}
+                  onChange={(value) =>
+                    setWineFilters((current) => ({ ...current, sweetness: value }))
+                  }
+                />
+                <FilterSelect
+                  label={copy.filters.body}
+                  value={wineFilters.body}
+                  options={traitRangeFilterOptions}
+                  getLabel={(value) => getTraitRangeFilterLabel(value, copy.filters)}
+                  onChange={(value) =>
+                    setWineFilters((current) => ({ ...current, body: value }))
+                  }
+                />
+                <FilterSelect
+                  label={copy.filters.tannin}
+                  value={wineFilters.tannin}
+                  options={traitRangeFilterOptions}
+                  getLabel={(value) => getTraitRangeFilterLabel(value, copy.filters)}
+                  onChange={(value) =>
+                    setWineFilters((current) => ({ ...current, tannin: value }))
+                  }
+                />
+                <FilterSelect
+                  label={copy.filters.acidity}
+                  value={wineFilters.acidity}
+                  options={traitRangeFilterOptions}
+                  getLabel={(value) => getTraitRangeFilterLabel(value, copy.filters)}
+                  onChange={(value) =>
+                    setWineFilters((current) => ({ ...current, acidity: value }))
+                  }
+                />
+                <FilterSelect
+                  label={copy.filters.alcohol}
+                  value={wineFilters.alcohol}
+                  options={alcoholFilterOptions}
+                  getLabel={(value) =>
+                    value === "any" ? copy.filters.any : copy.alcoholLevels[value]
+                  }
+                  onChange={(value) =>
+                    setWineFilters((current) => ({ ...current, alcohol: value }))
+                  }
+                />
+              </div>
+            </section>
+
             <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-3">
-              {displayedWines.map((wine) => (
+              {filteredWines.map((wine) => (
                 <WineLibraryCard key={wine.id} wine={wine} labels={copy} />
               ))}
             </div>
