@@ -635,10 +635,10 @@ function App() {
         </header>
 
         {!started ? (
-          <section className="dream-enter grid flex-1 place-items-center py-10">
+          <section className="dream-enter dream-stage grid flex-1 place-items-center py-10">
             <div className="w-full max-w-2xl">
               <div className="mb-5 flex justify-center">
-                <div className="relative grid size-24 place-items-center rounded-t-full border border-cork bg-ivory/[0.06] text-cork shadow-sketch">
+                <div className="hero-mark relative grid size-24 place-items-center rounded-t-full border border-cork bg-ivory/[0.06] text-cork shadow-sketch">
                   <Grape size={44} />
                 </div>
               </div>
@@ -676,7 +676,7 @@ function App() {
         ) : isPouring ? (
           <PourAnimation copy={copy} />
         ) : showResults ? (
-          <section className="dream-enter py-7">
+          <section className="dream-enter dream-stage py-7">
             <div className="mb-6 flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
               <div>
                 <p className="font-body text-sm font-medium uppercase tracking-[0.22em] text-cork">
@@ -705,13 +705,13 @@ function App() {
             </div>
           </section>
         ) : (
-          <section className="grid flex-1 place-items-center py-7">
+          <section className="dream-stage grid flex-1 place-items-center py-7">
             <div className="w-full max-w-2xl">
               <div className="mb-4 flex items-center gap-2">
                 {questions.map((question, index) => (
                   <div
-                    className={`h-2 flex-1 rounded-full border border-ivory/25 ${
-                      index <= step ? "bg-cork" : "bg-ivory/[0.08]"
+                    className={`dream-progress h-2 flex-1 rounded-full border border-ivory/25 ${
+                      index <= step ? "is-active bg-cork" : "bg-ivory/[0.08]"
                     }`}
                     key={question.key}
                   />
