@@ -431,7 +431,7 @@ export const ui = {
 
 export const wineTranslations = {
   "vinho-verde": {
-    flavourNotes: ["limonade", "pamplemousse rose", "zeste de lime", "pomme jaune", "fleur blanche"],
+    flavourNotes: ["lime","pomme verte","zeste de citron","embruns","fleurs blanches"],
     chipPairings: ["croustilles sel et vinaigre", "croustilles tortilla à la lime"],
     whyChipsWork: "Son acidité vive rend les croustilles salées et acidulées encore plus éclatantes.",
     expectation: "Léger, presque pétillant, citronné, et parfait à ouvrir avant que le souper soit prêt.",
@@ -440,7 +440,7 @@ export const wineTranslations = {
     lcboSearchTerms: ["Vinho Verde", "vin blanc portugais", "blanc faible en alcool"],
   },
   "sauvignon-blanc": {
-    flavourNotes: ["groseille à maquereau", "melon miel", "pamplemousse", "pêche blanche", "fruit de la passion"],
+    flavourNotes: ["zeste de pamplemousse","lime","herbes vertes","fruit de la passion","pierre mouillée"],
     chipPairings: ["croustilles à l’aneth", "croustilles jalapeño"],
     whyChipsWork: "Son côté vert et citronné tranche les assaisonnements et garde chaque bouchée bien vive.",
     expectation: "Un blanc lumineux et énergique, plein d’agrumes avec une petite touche herbacée.",
@@ -449,7 +449,7 @@ export const wineTranslations = {
     lcboSearchTerms: ["Sauvignon Blanc", "Sauvignon Blanc Nouvelle-Zélande", "Sauvignon Loire"],
   },
   albarino: {
-    flavourNotes: ["zeste de citron", "pamplemousse", "melon miel", "nectarine", "salinité"],
+    flavourNotes: ["zeste de citron","pêche blanche","melon vert","embruns","peau d’abricot"],
     chipPairings: ["croustilles sel et vinaigre", "croustilles aux crevettes"],
     whyChipsWork: "La fraîcheur saline et citronnée rend les grignotines iodées et acidulées plus vibrantes.",
     expectation: "Un blanc côtier, avec agrumes éclatants, fruit à noyau juteux et salinité rafraîchissante.",
@@ -458,7 +458,7 @@ export const wineTranslations = {
     lcboSearchTerms: ["Albariño", "Albarino", "Rías Baixas", "vin blanc espagnol"],
   },
   assyrtiko: {
-    flavourNotes: ["lime", "fruit de la passion", "cire d’abeille", "silex", "salinité"],
+    flavourNotes: ["zeste de citron","poire verte","sel marin","pierre mouillée","minéral fumé"],
     chipPairings: ["croustilles nature salées", "croustilles kettle"],
     whyChipsWork: "Sa fraîcheur extrême et son intensité minérale adorent le croustillant salé.",
     expectation: "Tranchant, volcanique, minéral, avec une fraîcheur presque mordante.",
@@ -467,7 +467,7 @@ export const wineTranslations = {
     lcboSearchTerms: ["Assyrtiko", "vin de Santorin", "vin blanc grec"],
   },
   "gruner-veltliner": {
-    flavourNotes: ["carambole", "groseille à maquereau", "haricot vert", "poivre blanc", "gravier concassé"],
+    flavourNotes: ["lime","pomme verte","pois mange-tout","poivre blanc","poussière minérale"],
     chipPairings: ["croustilles salées", "croustilles de légumes"],
     whyChipsWork: "Sa fraîcheur poivrée garde les grignotines salées et végétales bien vivantes.",
     expectation: "Vif, poivré, citronné, et discrètement l’un des blancs les plus faciles à accorder.",
@@ -476,7 +476,7 @@ export const wineTranslations = {
     lcboSearchTerms: ["Grüner Veltliner", "Gruner Veltliner", "vin blanc autrichien"],
   },
   vermentino: {
-    flavourNotes: ["lime", "pamplemousse", "pomme verte", "amande", "jonquille"],
+    flavourNotes: ["citron","poire verte","herbes marines","amande amère","fleurs blanches"],
     chipPairings: ["croustilles à l’huile d’olive", "craquelins aux herbes"],
     whyChipsWork: "Sa fraîcheur méditerranéenne et herbacée aime les grignotines salées et savoureuses.",
     expectation: "Solaire, herbacé, citronné, et facile à boire sans être banal.",
@@ -485,7 +485,7 @@ export const wineTranslations = {
     lcboSearchTerms: ["Vermentino", "vin blanc de Sardaigne", "blanc côtier italien"],
   },
   sancerre: {
-    flavourNotes: ["groseille à maquereau", "pamplemousse", "herbes fraîches", "silex", "fumée"],
+    flavourNotes: ["lime","groseille à maquereau","herbe coupée","craie","zeste d’agrumes"],
     chipPairings: ["craquelins au fromage de chèvre", "croustilles sel et poivre"],
     whyChipsWork: "Les agrumes minéraux coupent magnifiquement les grignotines crémeuses et salées.",
     expectation: "Élégant, minéral, précis, avec toute l’énergie d’un Sauvignon Blanc tendu.",
@@ -494,7 +494,7 @@ export const wineTranslations = {
     lcboSearchTerms: ["Sancerre", "Sauvignon Blanc de Loire", "Sauvignon Blanc français"],
   },
   "pinot-grigio": {
-    flavourNotes: ["pêche blanche", "zeste de citron", "cantaloup", "amande verte", "gravier concassé"],
+    flavourNotes: ["citron","poire","pomme verte","pêche blanche","peau d’amande"],
     chipPairings: ["croustilles classiques salées", "croustilles crème sure et oignon"],
     whyChipsWork: "Son fruit net et son corps léger l’aident à accompagner les snacks crémeux ou salés.",
     expectation: "Vif, simple, et merveilleusement sans complication.",
@@ -503,7 +503,7 @@ export const wineTranslations = {
     lcboSearchTerms: ["Pinot Grigio", "Pinot Grigio italien", "Pinot Gris"],
   },
   riesling: {
-    flavourNotes: ["lime", "pomme verte", "cire d’abeille", "jasmin", "pétrole"],
+    flavourNotes: ["zeste de lime","pomme verte","abricot","fleurs blanches","pierre mouillée"],
     chipPairings: ["croustilles épicées", "croustilles chili doux"],
     whyChipsWork: "Un peu de sucre calme le piquant pendant que l’acidité remet le palais à zéro.",
     expectation: "Un blanc électrique et fruité, parfois sec, parfois doucement sucré.",
@@ -512,7 +512,7 @@ export const wineTranslations = {
     lcboSearchTerms: ["Riesling", "Riesling demi-sec", "Riesling allemand"],
   },
   gewurztraminer: {
-    flavourNotes: ["litchi", "rose", "pamplemousse", "tangerine", "gingembre"],
+    flavourNotes: ["litchi","eau de rose","zeste de mandarine","gingembre","poire mûre"],
     chipPairings: ["croustilles chili doux", "croustilles au cari"],
     whyChipsWork: "Le fruit parfumé joue très bien avec les épices chaudes et une pointe de douceur.",
     expectation: "Aromatique, ample, floral, et plus théâtral que le blanc moyen.",
@@ -521,7 +521,7 @@ export const wineTranslations = {
     lcboSearchTerms: ["Gewürztraminer", "Gewurztraminer", "Gewürztraminer d’Alsace"],
   },
   chardonnay: {
-    flavourNotes: ["pomme jaune", "vanille", "beurre"],
+    flavourNotes: ["pomme jaune","poire","crème citronnée","crème au beurre","vanille grillée"],
     chipPairings: ["croustilles au cheddar", "maïs soufflé beurré"],
     whyChipsWork: "La texture crémeuse et le fruit rond répondent aux saveurs beurrées et fromagées.",
     expectation: "Rond, réconfortant, parfois crémeux, parfois net selon la bouteille.",
@@ -530,7 +530,7 @@ export const wineTranslations = {
     lcboSearchTerms: ["Chardonnay", "Chardonnay non boisé", "Bourgogne blanc"],
   },
   "chenin-blanc": {
-    flavourNotes: ["coing", "pomme jaune", "poire", "camomille", "miel"],
+    flavourNotes: ["pomme verte","coing","peau de poire","rayon de miel","tisane de camomille"],
     chipPairings: ["croustilles salées", "craquelins au fromage de chèvre"],
     whyChipsWork: "La haute acidité et la texture cireuse rendent les snacks salés ronds et frais.",
     expectation: "Acidulé, texturé, et plus complexe qu’il n’en a l’air.",
@@ -539,7 +539,7 @@ export const wineTranslations = {
     lcboSearchTerms: ["Chenin Blanc", "Vouvray", "Chenin sud-africain"],
   },
   rose: {
-    flavourNotes: ["fraise", "melon d’eau", "écorce d’orange"],
+    flavourNotes: ["fraise","framboise","écorce de melon d’eau","zeste d’orange","herbes fraîches"],
     chipPairings: ["croustilles all dressed", "croustilles nature salées"],
     whyChipsWork: "Son fruit rouge vif est assez flexible pour les assaisonnements salés et mélangés.",
     expectation: "Frais, rose, sec, et pratiquement fait pour grignoter sans cérémonie.",
@@ -548,7 +548,7 @@ export const wineTranslations = {
     lcboSearchTerms: ["rosé sec", "rosé de Provence", "rosé ontarien"],
   },
   "provence-rose": {
-    flavourNotes: ["fraise", "melon miel", "pétale de rose", "céleri", "melon d’eau"],
+    flavourNotes: ["fraise des bois","peau de pêche","zeste d’agrumes","melon","herbes sèches"],
     chipPairings: ["croustilles au sel de mer", "craquelins aux herbes"],
     whyChipsWork: "La légèreté sèche et citronnée rend les snacks salés et herbacés propres et estivaux.",
     expectation: "Pâle, sec, vif, très “terrasse ensoleillée” comme style de rosé.",
@@ -557,7 +557,7 @@ export const wineTranslations = {
     lcboSearchTerms: ["rosé de Provence", "rosé pâle sec", "rosé français"],
   },
   "sparkling-rose": {
-    flavourNotes: ["framboise", "pamplemousse rose", "brioche"],
+    flavourNotes: ["fruits rouges","pamplemousse rose","fraise","zeste d’agrumes","pâtisserie"],
     chipPairings: ["croustilles kettle", "bouchées de poulet frit"],
     whyChipsWork: "Les bulles nettoient le sel et le gras pendant que le fruit rouge garde le tout ludique.",
     expectation: "Vif, pétillant, rose, et instantanément plus festif que prévu.",
@@ -566,7 +566,7 @@ export const wineTranslations = {
     lcboSearchTerms: ["rosé mousseux", "cava rosé", "vin mousseux rosé"],
   },
   "chillable-deep-rose": {
-    flavourNotes: ["grenade", "orange sanguine", "herbes séchées"],
+    flavourNotes: ["cerise rouge","grenade","orange sanguine","herbes savoureuses","accroche de thé"],
     chipPairings: ["croustilles au paprika", "croustillants bruschetta tomate"],
     whyChipsWork: "Plus de couleur et de matière supportent la tomate et le paprika tout en restant frais.",
     expectation: "Plus foncé, plus juteux, et plus fait pour la table qu’un rosé pâle classique.",
@@ -575,7 +575,7 @@ export const wineTranslations = {
     lcboSearchTerms: ["clarete", "rosé foncé", "rosé espagnol"],
   },
   "gamay-beaujolais": {
-    flavourNotes: ["grenade", "ronce de mûre", "violette", "terreau", "pivoine"],
+    flavourNotes: ["cerise rouge","canneberge","fruit rouge bonbon","violette","terre fraîche"],
     chipPairings: ["croustilles ketchup", "bretzels salés"],
     whyChipsWork: "Le fruit rouge juteux et les tanins bas font ressortir les assaisonnements tomate-sucrés.",
     expectation: "Un rouge à rafraîchir, plein de cerise juteuse et sans prise de tête.",
@@ -584,7 +584,7 @@ export const wineTranslations = {
     lcboSearchTerms: ["Beaujolais", "Gamay", "Beaujolais Villages"],
   },
   "lambrusco-amabile": {
-    flavourNotes: ["cerise noire", "violette", "cola"],
+    flavourNotes: ["cerise noire","bleuet","violette","épice cola","herbes douces"],
     chipPairings: ["croustilles épicées", "croustillants de prosciutto"],
     whyChipsWork: "Les bulles rouges douces calment les épices et adorent les snacks salés et savoureux.",
     expectation: "Un rouge doux légèrement pétillant, froid, juteux, et parfait pour une table de grignotines.",
@@ -593,7 +593,7 @@ export const wineTranslations = {
     lcboSearchTerms: ["Lambrusco Amabile", "Lambrusco doux", "rouge doux mousseux"],
   },
   "sweet-red-blend": {
-    flavourNotes: ["confiture de mûre", "vanille", "chocolat au lait"],
+    flavourNotes: ["compote de mûre","sirop de cerise","crème vanillée","moka","épices à pâtisserie"],
     chipPairings: ["croustilles nacho", "bretzels enrobés de chocolat"],
     whyChipsWork: "Le fruit confituré et les tanins doux rendent les snacks salés, fromagés et chocolatés faciles.",
     expectation: "Souple, sucré, très fruité, et fait pour ceux qui ne veulent pas un rouge sec.",
@@ -602,7 +602,7 @@ export const wineTranslations = {
     lcboSearchTerms: ["assemblage rouge doux", "rouge sucré confituré", "Apothic red"],
   },
   "pinot-noir": {
-    flavourNotes: ["framboise", "cerise", "champignon", "vanille", "hibiscus"],
+    flavourNotes: ["cerise rouge","canneberge","feuille de framboisier","sous-bois","épice douce"],
     chipPairings: ["croustilles à la truffe", "croustillants de champignons"],
     whyChipsWork: "Les notes terreuses accrochent les snacks savoureux pendant que le corps léger reste élégant.",
     expectation: "Fruit rouge soyeux et lumineux, avec un murmure terreux.",
@@ -611,7 +611,7 @@ export const wineTranslations = {
     lcboSearchTerms: ["Pinot Noir", "Bourgogne rouge", "Pinot Noir ontarien"],
   },
   sangiovese: {
-    flavourNotes: ["cerise", "tomate rôtie", "balsamique doux", "origan", "espresso"],
+    flavourNotes: ["cerise acidulée","feuille de tomate","origan séché","cuir","grain d’espresso"],
     chipPairings: ["croustilles pizza", "craquelins tomate basilic"],
     whyChipsWork: "L’acidité tomate et les herbes rejoignent naturellement les snacks salés à l’italienne.",
     expectation: "Un rouge acidulé, savoureux, gourmand, avec un charme rustique.",
@@ -620,7 +620,7 @@ export const wineTranslations = {
     lcboSearchTerms: ["Chianti", "Sangiovese", "vin rouge toscan"],
   },
   barbera: {
-    flavourNotes: ["cerise acidulée", "réglisse", "mûre", "herbes séchées", "poivre noir"],
+    flavourNotes: ["cerise rouge","framboise noire","peau de prune","violette","herbes poivrées"],
     chipPairings: ["croustilles barbecue", "croustilles ketchup"],
     whyChipsWork: "Sa haute acidité empêche les snacks fumés et sucrés de devenir lourds.",
     expectation: "Juteux, vibrant, fruit noir, et dangereusement facile à boire.",
@@ -629,7 +629,7 @@ export const wineTranslations = {
     lcboSearchTerms: ["Barbera", "Barbera d’Asti", "vin rouge italien"],
   },
   "cabernet-franc": {
-    flavourNotes: ["fraise", "framboise", "poivron", "gravier concassé", "piment"],
+    flavourNotes: ["framboise","groseille rouge","poivre vert","herbes feuillues","minéral graveleux"],
     chipPairings: ["croustilles barbecue", "craquelins aux herbes"],
     whyChipsWork: "Le côté herbacé et le fruit rouge empêchent les snacks fumés-sucrés d’être lourds.",
     expectation: "Un rouge moyen avec petits fruits, fraîcheur, et une petite touche verte.",
@@ -638,7 +638,7 @@ export const wineTranslations = {
     lcboSearchTerms: ["Cabernet Franc", "Cabernet Franc de Loire", "Cabernet Franc ontarien"],
   },
   merlot: {
-    flavourNotes: ["cerise", "chocolat", "prune", "feuille de laurier", "vanille"],
+    flavourNotes: ["prune","cerise noire","cacao","feuille de laurier","vanille douce"],
     chipPairings: ["croustilles barbecue", "craquelins au cheddar"],
     whyChipsWork: "Le fruit moelleux et les tanins modérés vont bien avec les snacks fumés et fromagés.",
     expectation: "Souple, pruné, réconfortant, sans devenir trop intense.",
@@ -647,7 +647,7 @@ export const wineTranslations = {
     lcboSearchTerms: ["Merlot", "Bordeaux rive droite", "Merlot californien"],
   },
   malbec: {
-    flavourNotes: ["prune rouge", "mûre", "vanille", "tabac doux", "cacao"],
+    flavourNotes: ["prune noire","mûre","violette","éclat de cacao","épice fumée"],
     chipPairings: ["croustilles barbecue fumé", "croustilles steakhouse"],
     whyChipsWork: "Le fruit noir et sa structure se marient bien avec la fumée et les gros assaisonnements.",
     expectation: "Sombre, souple, généreux, avec une petite énergie feu de camp.",
@@ -656,7 +656,7 @@ export const wineTranslations = {
     lcboSearchTerms: ["Malbec", "Malbec argentin", "Malbec de Mendoza"],
   },
   zinfandel: {
-    flavourNotes: ["mûre", "fraise", "confiture de pêche", "cannelle", "tabac doux"],
+    flavourNotes: ["baies de ronce","confiture de framboise","cerise noire","épice de cannelle","poivre"],
     chipPairings: ["croustilles barbecue épicé", "croustilles nacho"],
     whyChipsWork: "Le fruit mûr adoucit les épices pendant que le corps suit les grosses saveurs.",
     expectation: "Gros, juteux, épicé, et absolument pas timide.",
@@ -665,7 +665,7 @@ export const wineTranslations = {
     lcboSearchTerms: ["Zinfandel", "Zinfandel californien", "Primitivo"],
   },
   "syrah-shiraz": {
-    flavourNotes: ["bleuet", "prune noire", "chocolat au lait", "tabac", "poivre vert"],
+    flavourNotes: ["prune noire","peau de bleuet","poivre noir","tapenade d’olive","fumée"],
     chipPairings: ["croustilles au poivre noir", "croustilles paprika fumé"],
     whyChipsWork: "Le poivre et la fumée du vin rappellent le snack sans se perdre.",
     expectation: "Sombre, poivré, savoureux, et excellent pour une soirée canapé dramatique.",
@@ -674,7 +674,7 @@ export const wineTranslations = {
     lcboSearchTerms: ["Syrah", "Shiraz", "Syrah du Rhône nord"],
   },
   "cabernet-sauvignon": {
-    flavourNotes: ["cerise noire", "cassis", "cèdre", "épices de pâtisserie", "graphite"],
+    flavourNotes: ["cassis","cerise noire","cèdre","menthe","chocolat noir"],
     chipPairings: ["croustilles style ribeye", "croustillants au cheddar vieilli"],
     whyChipsWork: "Les snacks gras et fromagés assouplissent les tanins et rendent le fruit noir plus velouté.",
     expectation: "Structuré, intense, et prêt pour quelqu’un qui veut un vrai gros rouge.",
@@ -683,7 +683,7 @@ export const wineTranslations = {
     lcboSearchTerms: ["Cabernet Sauvignon", "Cabernet de Napa", "Cabernet Bordeaux"],
   },
   "cotes-du-rhone-gsm": {
-    flavourNotes: ["framboise", "mûre", "romarin", "épices de pâtisserie", "lavande"],
+    flavourNotes: ["framboise","prune","herbes de garrigue","poivre noir","lavande"],
     chipPairings: ["croustilles au romarin", "croustilles barbecue"],
     whyChipsWork: "Son profil herbacé et poivré accompagne très bien les assaisonnements savoureux et les grignotines salées.",
     expectation: "Rustique, souple, et parfait pour les soupers entre amis.",
@@ -692,7 +692,7 @@ export const wineTranslations = {
     lcboSearchTerms: ["Côtes du Rhône", "Cotes du Rhone", "assemblage GSM"],
   },
   grenache: {
-    flavourNotes: ["fraise compotée", "prune grillée", "cuir", "herbes séchées", "orange sanguine"],
+    flavourNotes: ["compote de fraise","framboise","zeste d’orange","poivre blanc","herbes séchées"],
     chipPairings: ["croustilles au paprika", "croustilles chili doux"],
     whyChipsWork: "Le fruit mûr et les épices flattent les assaisonnements fumés-sucrés.",
     expectation: "Chaud, juteux, épicé, et très facile à vivre.",
@@ -701,7 +701,7 @@ export const wineTranslations = {
     lcboSearchTerms: ["Grenache", "Garnacha", "vin du Rhône sud"],
   },
   mourvedre: {
-    flavourNotes: ["mûre", "poivre noir", "cacao", "tabac", "viande rôtie"],
+    flavourNotes: ["mûre","prune noire","cuir","poivre","viande fumée"],
     chipPairings: ["croustilles fumées", "croustillants de bœuf séché"],
     whyChipsWork: "Les saveurs fumées et savoureuses font écho aux notes riches et carnées.",
     expectation: "Sombre, terreux, animal, et profondément savoureux.",
@@ -710,7 +710,7 @@ export const wineTranslations = {
     lcboSearchTerms: ["Mourvèdre", "Mourvedre", "Monastrell"],
   },
   "nero-davola": {
-    flavourNotes: ["cerise noire", "prune noire", "réglisse", "tabac", "piment"],
+    flavourNotes: ["cerise noire","prune","herbes séchées","racine de réglisse","épice chaude"],
     chipPairings: ["croustilles à l’ail", "croustilles barbecue"],
     whyChipsWork: "Le fruit noir et la richesse herbacée aiment les snacks savoureux et costauds.",
     expectation: "Rouge sicilien corsé, avec fruit noir et chaleur méditerranéenne.",
@@ -719,7 +719,7 @@ export const wineTranslations = {
     lcboSearchTerms: ["Nero d’Avola", "Nero d'Avola", "vin rouge sicilien"],
   },
   carmenere: {
-    flavourNotes: ["framboise", "poivron", "prune noire", "vanille", "paprika"],
+    flavourNotes: ["prune noire","framboise","poivron rôti","paprika","cacao"],
     chipPairings: ["croustilles jalapeño", "croustilles barbecue"],
     whyChipsWork: "Les contours poivrés et herbacés s’accordent naturellement aux snacks fumés et épicés.",
     expectation: "Fruit noir souple avec une personnalité un peu verte et épicée.",
@@ -728,7 +728,7 @@ export const wineTranslations = {
     lcboSearchTerms: ["Carménère", "Carmenere", "vin rouge chilien"],
   },
   "tempranillo-rioja": {
-    flavourNotes: ["cerise", "figue séchée", "cèdre", "tabac", "aneth"],
+    flavourNotes: ["cerise rouge","figue séchée","cuir","cèdre","épice d’aneth"],
     chipPairings: ["croustilles au paprika", "croustilles style jambon"],
     whyChipsWork: "Le chêne savoureux et la cerise flattent le paprika fumé et les saveurs de charcuterie.",
     expectation: "Poli, savoureux, et réconfortant sans devenir lourd.",
@@ -737,7 +737,7 @@ export const wineTranslations = {
     lcboSearchTerms: ["Rioja", "Tempranillo", "vin rouge espagnol"],
   },
   "montepulciano-dabruzzo": {
-    flavourNotes: ["prune rouge", "mûre", "thym séché", "épices de pâtisserie", "mesquite"],
+    flavourNotes: ["prune rouge","cerise noire","origan séché","épices à pâtisserie","terre fumée"],
     chipPairings: ["croustilles pizza", "croustillants pain à l’ail"],
     whyChipsWork: "Le fruit rouge italien et les herbes font chanter tomate, ail et fromage.",
     expectation: "Rouge facile, fruité et savoureux, parfait avec un souper de semaine.",
@@ -746,7 +746,7 @@ export const wineTranslations = {
     lcboSearchTerms: ["Montepulciano d’Abruzzo", "Montepulciano d'Abruzzo", "vin Montepulciano"],
   },
   nebbiolo: {
-    flavourNotes: ["cerise", "rose", "cuir", "anis", "pot d’argile"],
+    flavourNotes: ["cerise acidulée","pétale de rose","goudron","herbes séchées","zeste d’orange"],
     chipPairings: ["croustillants au fromage vieilli", "croustilles aux porcini"],
     whyChipsWork: "Le sel et l’umami aident à dompter les tanins pendant que les notes florales restent marquantes.",
     expectation: "Élégant mais accrocheur, avec roses, cerises et structure sérieuse.",
@@ -755,7 +755,7 @@ export const wineTranslations = {
     lcboSearchTerms: ["Nebbiolo", "Barolo", "Barbaresco"],
   },
   xinomavro: {
-    flavourNotes: ["framboise", "sauce aux prunes", "anis", "quatre-épices", "tabac"],
+    flavourNotes: ["cerise rouge","feuille de tomate","figue séchée","olive","anis"],
     chipPairings: ["croustilles aux olives", "croustilles à la truffe"],
     whyChipsWork: "Les snacks salés et savoureux assouplissent les tanins en rejoignant sa complexité terreuse.",
     expectation: "Un rouge grec puissant et savoureux, avec acidité tranchante et vraie structure.",
@@ -764,7 +764,7 @@ export const wineTranslations = {
     lcboSearchTerms: ["Xinomavro", "vin rouge grec", "vin de Naoussa"],
   },
   aglianico: {
-    flavourNotes: ["poivre blanc", "cerise noire", "fumée", "gibier", "prune épicée"],
+    flavourNotes: ["cerise noire","prune noire","fumée","cuir","épice poivrée"],
     chipPairings: ["croustilles fumées", "croustillants au fromage vieilli"],
     whyChipsWork: "Les gros tanins et la profondeur fumée ont besoin de snacks salés et gras.",
     expectation: "Sombre, volcanique, structuré, et fait pour boire lentement.",
@@ -773,7 +773,7 @@ export const wineTranslations = {
     lcboSearchTerms: ["Aglianico", "Taurasi", "vin rouge du sud de l’Italie"],
   },
   tannat: {
-    flavourNotes: ["cassis", "prune", "réglisse", "fumée", "cardamome"],
+    flavourNotes: ["cassis","prune noire","cacao","fumée","épice sombre"],
     chipPairings: ["croustilles steakhouse", "croustilles au poivre"],
     whyChipsWork: "Les tanins massifs demandent des snacks riches et salés pour trouver l’équilibre.",
     expectation: "Énorme, musclé, profondément structuré, pour les envies de grosses saveurs.",
@@ -782,7 +782,7 @@ export const wineTranslations = {
     lcboSearchTerms: ["Tannat", "vin rouge uruguayen", "vin de Madiran"],
   },
   furmint: {
-    flavourNotes: ["citron meyer", "pomme verte", "gingembre", "fumée", "poivron vert"],
+    flavourNotes: ["pomme verte","zeste de citron","poire","gingembre","minéral fumé"],
     chipPairings: ["croustilles sel et vinaigre", "croustilles crème sure"],
     whyChipsWork: "L’acidité laser traverse les snacks crémeux et fait briller les croustilles acidulées.",
     expectation: "Pointu, minéral, très frais, et vraiment gratifiant.",
@@ -791,7 +791,7 @@ export const wineTranslations = {
     lcboSearchTerms: ["Furmint", "Furmint sec", "vin blanc hongrois"],
   },
   moscato: {
-    flavourNotes: ["fleur d’oranger", "citron meyer", "mandarine", "poire", "chèvrefeuille"],
+    flavourNotes: ["fleur d’oranger","pêche","mandarine","bonbon au raisin","chèvrefeuille"],
     chipPairings: ["croustilles épicées", "croustillants cannelle-sucre"],
     whyChipsWork: "Les bulles sucrées calment les épices et transforment les snacks salés en plaisir quasi dessert.",
     expectation: "Faible en alcool, doux, légèrement pétillant, et pur bonheur fruité.",
@@ -800,7 +800,7 @@ export const wineTranslations = {
     lcboSearchTerms: ["Moscato d’Asti", "Moscato d'Asti", "vin mousseux doux"],
   },
   brachetto: {
-    flavourNotes: ["fraise confite", "zeste d’orange", "cassis", "abricot", "crème"],
+    flavourNotes: ["fraise des bois","bonbon à la framboise","pétale de rose","zeste d’orange","soda crème"],
     chipPairings: ["bretzels au chocolat noir", "croustilles kettle aux petits fruits"],
     whyChipsWork: "Les bulles rouges douces adorent le croquant salé et les touches chocolatées.",
     expectation: "Un rouge dessert légèrement pétillant qui goûte les baies avec un clin d’œil.",
@@ -809,7 +809,7 @@ export const wineTranslations = {
     lcboSearchTerms: ["Brachetto", "Brachetto d’Acqui", "rouge doux mousseux"],
   },
   port: {
-    flavourNotes: ["prune", "cerise séchée", "chocolat", "raisin sec", "cannelle"],
+    flavourNotes: ["prune noire","cerise séchée","figue","cacao","épice chaude"],
     chipPairings: ["croustilles au fromage bleu", "amandes au chocolat noir"],
     whyChipsWork: "La grande douceur et la richesse demandent un contraste salé, puissant ou amer.",
     expectation: "Doux, fort, velouté, et fait pour de tout petits verres.",
@@ -818,7 +818,7 @@ export const wineTranslations = {
     lcboSearchTerms: ["Porto", "Porto Ruby", "Porto Tawny"],
   },
   "dry-sherry": {
-    flavourNotes: ["jacquier", "salinité", "citron confit", "noix du Brésil", "amande"],
+    flavourNotes: ["olive verte","sel marin","amande","zeste de citron","levain"],
     chipPairings: ["amandes marcona", "croustilles nature salées"],
     whyChipsWork: "Les snacks salés et noisettés rappellent le côté savoureux et vif du vin.",
     expectation: "Très sec, salin, noisetté, et glorieusement fait pour grignoter.",
@@ -827,7 +827,7 @@ export const wineTranslations = {
     lcboSearchTerms: ["Fino Sherry", "Manzanilla Sherry", "Sherry sec"],
   },
   champagne: {
-    flavourNotes: ["agrumes", "pomme jaune", "crème", "amande", "pain grillé"],
+    flavourNotes: ["citron","pomme verte","brioche","amande","craie"],
     chipPairings: ["croustilles nature", "poulet frit"],
     whyChipsWork: "Les bulles et l’acidité nettoient le gras et le sel de la meilleure façon.",
     expectation: "Bulles vives, grillées, élégantes, qui rendent tout immédiatement festif.",
@@ -836,7 +836,7 @@ export const wineTranslations = {
     lcboSearchTerms: ["Champagne", "Champagne Brut", "vin mousseux français"],
   },
   cava: {
-    flavourNotes: ["coing", "lime", "pomme jaune", "camomille", "amande"],
+    flavourNotes: ["pomme verte","lime","coing","amande grillée","herbes sèches"],
     chipPairings: ["croustilles salées", "maïs soufflé"],
     whyChipsWork: "Les bulles sèches et la fraîcheur citronnée rendent les snacks salés dangereusement addictifs.",
     expectation: "Bulles espagnoles abordables, fraîches, avec une touche grillée discrète.",
@@ -845,7 +845,7 @@ export const wineTranslations = {
     lcboSearchTerms: ["Cava", "vin mousseux espagnol", "Cava Brut"],
   },
   prosecco: {
-    flavourNotes: ["pomme verte", "melon miel", "poire", "lager", "crème"],
+    flavourNotes: ["pomme verte","poire","pêche blanche","fleur d’agrumes","crème douce"],
     chipPairings: ["croustilles nature", "croustilles chili doux"],
     whyChipsWork: "Les bulles fruitées et souples vont facilement avec les snacks salés et légèrement sucrés.",
     expectation: "Mousseux léger, amical, fruité, fait pour boire sans se compliquer.",
@@ -854,7 +854,7 @@ export const wineTranslations = {
     lcboSearchTerms: ["Prosecco", "vin mousseux italien", "Prosecco extra dry"],
   },
   "orange-wine": {
-    flavourNotes: ["pomme meurtrie", "jacquier", "huile de lin", "genièvre", "miel"],
+    flavourNotes: ["abricot séché","zeste d’orange","pomme talée","thé noir","herbes savoureuses"],
     chipPairings: ["croustilles au cari", "noix épicées"],
     whyChipsWork: "La texture tannique et le côté funky aiment les snacks très épicés.",
     expectation: "Blanc texturé, accrocheur et funky, fait avec contact pelliculaire façon vin rouge.",
@@ -864,7 +864,7 @@ export const wineTranslations = {
   },
 
   viognier: {
-    flavourNotes: ["mandarine", "pêche", "mangue", "chèvrefeuille", "rose"],
+    flavourNotes: ["abricot","pêche blanche","zeste de mandarine","chèvrefeuille","gingembre"],
     chipPairings: ["croustilles crème sure et oignon", "maïs soufflé beurré"],
     whyChipsWork: "Son fruit généreux et sa texture huileuse vont bien avec les snacks crémeux et beurrés.",
     cheesePairings: ["brie", "camembert", "triple-crème"],
@@ -873,7 +873,7 @@ export const wineTranslations = {
     lcboSearchTerms: ["Viognier", "Viognier français", "vin blanc aromatique"],
   },
   verdejo: {
-    flavourNotes: ["lime", "melon miel", "zeste de pamplemousse", "fenouil", "pêche blanche"],
+    flavourNotes: ["zeste de lime","melon vert","zeste de pamplemousse","graine de fenouil","peau de pêche"],
     chipPairings: ["croustilles tortilla à la lime", "croustilles nature salées"],
     whyChipsWork: "Sa fraîcheur citronnée et herbacée, avec une légère amertume, rend les snacks salés et lime encore plus vifs.",
     cheesePairings: ["chèvre", "feta", "manchego"],
@@ -882,7 +882,7 @@ export const wineTranslations = {
     lcboSearchTerms: ["Verdejo", "Rueda Verdejo", "vin blanc espagnol"],
   },
   picpoul: {
-    flavourNotes: ["pomme verte", "fleur d’agrumes", "citron", "thym", "salinité"],
+    flavourNotes: ["zeste de citron","pomme verte","brise marine","fleurs blanches","thym frais"],
     chipPairings: ["croustilles sel et vinaigre", "croustilles nature salées"],
     whyChipsWork: "Son acidité mordante rend les snacks salés et acidulés presque électriques.",
     cheesePairings: ["chèvre", "feta", "fromage de chèvre frais"],
@@ -891,7 +891,7 @@ export const wineTranslations = {
     lcboSearchTerms: ["Picpoul", "Picpoul de Pinet", "blanc français vif"],
   },
   fiano: {
-    flavourNotes: ["melon miel", "poire asiatique", "noisette", "écorce d’orange", "pin"],
+    flavourNotes: ["poire","melon","noisette","zeste d’orange","herbes sauvages"],
     chipPairings: ["croustilles à l’huile d’olive", "craquelins aux herbes"],
     whyChipsWork: "Sa texture plus riche et cireuse, avec une touche noisettée et herbacée, aime les snacks salés et savoureux.",
     cheesePairings: ["pecorino", "burrata", "provolone affiné"],
@@ -900,7 +900,7 @@ export const wineTranslations = {
     lcboSearchTerms: ["Fiano", "Fiano di Avellino", "vin blanc italien"],
   },
   godello: {
-    flavourNotes: ["pamplemousse", "zeste de citron", "coing", "gravier concassé", "salinité"],
+    flavourNotes: ["crème citronnée","poire verte","coing","sel marin","minéral pierreux"],
     chipPairings: ["croustilles au sel de mer", "croustilles crème sure"],
     whyChipsWork: "Sa fraîcheur et son corps moyen accompagnent les snacks crémeux tout en gardant une finale lumineuse.",
     cheesePairings: ["manchego", "chèvre", "gruyère"],
@@ -909,7 +909,7 @@ export const wineTranslations = {
     lcboSearchTerms: ["Godello", "Godello du Bierzo", "Godello de Valdeorras"],
   },
   falanghina: {
-    flavourNotes: ["citron", "fleur d’agrumes", "pêche", "miel", "amande"],
+    flavourNotes: ["zeste de citron","pêche blanche","pomme verte","amande","fleurs printanières"],
     chipPairings: ["croustilles nature salées", "craquelins citron et herbes"],
     whyChipsWork: "Ses notes de citron, pêche et amande gardent les snacks salés et herbacés frais et faciles.",
     cheesePairings: ["mozzarella fraîche", "ricotta", "pecorino"],
@@ -918,7 +918,7 @@ export const wineTranslations = {
     lcboSearchTerms: ["Falanghina", "Falanghina del Sannio", "vin blanc de Campanie"],
   },
   mencia: {
-    flavourNotes: ["cerise acidulée", "violette", "anis", "mûre", "gravier concassé"],
+    flavourNotes: ["cerise rouge","mûre","violette","poivre noir","pierre mouillée"],
     chipPairings: ["croustilles à la truffe", "bretzels salés"],
     whyChipsWork: "Le fruit rouge frais, la touche poivrée et les notes minérales vont très bien avec les snacks salés et savoureux.",
     cheesePairings: ["manchego", "idiazabal", "fromage de chèvre affiné"],
@@ -927,7 +927,7 @@ export const wineTranslations = {
     lcboSearchTerms: ["Mencia", "Mencía du Bierzo", "vin rouge espagnol"],
   },
   "touriga-nacional": {
-    flavourNotes: ["bleuet", "violette", "prune", "menthe", "ardoise mouillée"],
+    flavourNotes: ["bleuet","prune noire","violette","menthe","chocolat noir"],
     chipPairings: ["croustilles steakhouse", "croustilles paprika fumé"],
     whyChipsWork: "Son fruit noir intense et ses tanins massifs demandent des snacks fumés, salés et vraiment goûteux.",
     cheesePairings: ["fromage bleu", "cheddar vieilli", "gouda vieilli"],
@@ -936,7 +936,7 @@ export const wineTranslations = {
     lcboSearchTerms: ["Touriga Nacional", "vin rouge portugais", "rouge du Douro"],
   },
   negroamaro: {
-    flavourNotes: ["cerise noire", "prune noire", "mûre", "pruneau", "thym séché"],
+    flavourNotes: ["cerise noire","prune séchée","mûre","herbes séchées","éclat de cacao"],
     chipPairings: ["croustilles barbecue", "croustilles à l’ail"],
     whyChipsWork: "Son fruit noir, ses herbes séchées et son côté rustique aiment les snacks savoureux et costauds.",
     cheesePairings: ["provolone affiné", "pecorino", "caciocavallo"],
@@ -945,7 +945,7 @@ export const wineTranslations = {
     lcboSearchTerms: ["Negroamaro", "vin rouge des Pouilles", "Negroamaro du Salento"],
   },
   dolcetto: {
-    flavourNotes: ["prune", "mûre", "cacao", "poivre noir", "violette"],
+    flavourNotes: ["cerise noire","prune","violette","peau d’amande","poivre noir"],
     chipPairings: ["croustilles pizza", "croustilles nature salées"],
     whyChipsWork: "Le fruit noir, le cacao, le poivre et une petite touche acidulée rendent les snacks salés à la tomate très efficaces.",
     cheesePairings: ["fontina", "taleggio", "toma"],
@@ -954,7 +954,7 @@ export const wineTranslations = {
     lcboSearchTerms: ["Dolcetto", "Dolcetto d’Alba", "vin rouge du Piémont"],
   },
   blaufrankisch: {
-    flavourNotes: ["ronce de mûre", "cerise noire", "chocolat noir", "quatre-épices", "poivre"],
+    flavourNotes: ["cerise noire","mûre","poivre","clou de girofle","terre"],
     chipPairings: ["croustilles au poivre noir", "croustilles kettle"],
     whyChipsWork: "Son acidité poivrée et son fruit noir gardent les snacks salés bien vivants tout en ajoutant de la profondeur.",
     cheesePairings: ["emmental", "gruyère", "gouda vieilli"],
@@ -963,7 +963,7 @@ export const wineTranslations = {
     lcboSearchTerms: ["Blaufrankisch", "Blaufränkisch", "vin rouge autrichien"],
   },
   zweigelt: {
-    flavourNotes: ["cerise rouge", "framboise", "poivre noir", "réglisse", "chocolat"],
+    flavourNotes: ["cerise rouge","framboise","canneberge","poivre noir","cacao"],
     chipPairings: ["croustilles ketchup", "bretzels salés"],
     whyChipsWork: "Son fruit rouge vif, ses tanins bas et son épice poivrée font ressortir les snacks salés et tomate-sucrés.",
     cheesePairings: ["emmental", "havarti", "gouda jeune"],
