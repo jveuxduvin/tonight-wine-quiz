@@ -8,6 +8,7 @@ import {
   Heart,
   HelpCircle,
   RefreshCw,
+  Search,
   Shuffle,
   Sparkles,
   Sun,
@@ -25,6 +26,7 @@ import type {
   DrynessPreference,
   QuizAnswers,
   ScoredWine,
+  Wine as WineData,
   WineCategory,
   Vibe,
 } from "./types";
@@ -184,8 +186,42 @@ function matchesTraitRange(value: number, filter: TraitRangeFilter) {
   }
 }
 
-function filterWines(allWines: typeof wines, filters: WineFilters) {
+function normalizeSearchText(value: string) {
+  return value
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .toLowerCase();
+}
+
+function wineMatchesSearch(wine: WineData, searchQuery: string) {
+  const normalizedQuery = normalizeSearchText(searchQuery.trim());
+
+  if (!normalizedQuery) {
+    return true;
+  }
+
+  const searchableText = [
+    wine.name,
+    wine.category,
+    wine.alcohol,
+    wine.expectation,
+    wine.whyChipsWork,
+    wine.whyCheeseWorks,
+    ...wine.flavourNotes,
+    ...wine.chipPairings,
+    ...wine.cheesePairings,
+    ...wine.lcboSearchTerms,
+  ].join(" ");
+
+  return normalizeSearchText(searchableText).includes(normalizedQuery);
+}
+
+function filterWines(allWines: WineData[], filters: WineFilters, searchQuery: string) {
   return allWines.filter((wine) => {
+    if (!wineMatchesSearch(wine, searchQuery)) {
+      return false;
+    }
+
     if (filters.category !== "any" && wine.category !== filters.category) {
       return false;
     }
@@ -285,6 +321,7 @@ function App() {
   const [isPouring, setIsPouring] = useState(false);
   const [surpriseResults, setSurpriseResults] = useState<ScoredWine[] | null>(null);
   const [wineFilters, setWineFilters] = useState<WineFilters>(defaultWineFilters);
+  const [wineSearch, setWineSearch] = useState("");
   const pourTimer = useRef<ReturnType<typeof window.setTimeout> | null>(null);
 
   const copy = ui[language];
@@ -304,8 +341,8 @@ function App() {
   );
   const displayedWines = useMemo(() => localizeWines(wines, language), [language]);
   const filteredWines = useMemo(
-    () => filterWines(displayedWines, wineFilters),
-    [displayedWines, wineFilters],
+    () => filterWines(displayedWines, wineFilters, wineSearch),
+    [displayedWines, wineFilters, wineSearch],
   );
 
   useEffect(() => {
@@ -457,12 +494,34 @@ function App() {
                 </div>
                 <button
                   type="button"
-                  onClick={() => setWineFilters(defaultWineFilters)}
+                  onClick={() => {
+                    setWineFilters(defaultWineFilters);
+                    setWineSearch("");
+                  }}
                   className="sketch-button justify-center bg-transparent text-ivory"
                 >
                   {copy.filters.clear}
                 </button>
               </div>
+
+              <label className="mb-4 grid gap-2">
+                <span className="font-body text-xs font-normal uppercase tracking-[0.16em] text-cork">
+                  {copy.filters.search}
+                </span>
+                <span className="relative block">
+                  <Search
+                    aria-hidden="true"
+                    className="pointer-events-none absolute left-4 top-1/2 h-4 w-4 -translate-y-1/2 text-cork"
+                  />
+                  <input
+                    type="search"
+                    value={wineSearch}
+                    onChange={(event) => setWineSearch(event.target.value)}
+                    placeholder={copy.filters.searchPlaceholder}
+                    className="min-h-12 w-full rounded-2xl border border-ivory/22 bg-[#0d1c31] py-2 pl-11 pr-4 font-body text-sm font-light text-ivory outline-none transition placeholder:text-ivory/42 hover:border-cork/70 focus:border-cork focus:ring-2 focus:ring-cork/30"
+                  />
+                </span>
+              </label>
 
               <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
                 <FilterSelect
@@ -531,6 +590,11 @@ function App() {
                 <WineLibraryCard key={wine.id} wine={wine} labels={copy} />
               ))}
             </div>
+            {filteredWines.length === 0 ? (
+              <div className="sketch-card mt-5 p-6 text-center font-body text-sm font-light text-ivory/72">
+                {copy.filters.noResults}
+              </div>
+            ) : null}
           </section>
         </div>
       </main>
