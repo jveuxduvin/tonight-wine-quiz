@@ -455,7 +455,10 @@ function App() {
                   back: copy.back,
                   next: copy.next,
                   seeResults: copy.seeResults,
+                  openHelp: copy.help.openHelp,
+                  closeHelp: copy.help.closeHelp,
                 }}
+                helpContent={copy.help[activeQuestion.key]}
               />
             </div>
           </section>

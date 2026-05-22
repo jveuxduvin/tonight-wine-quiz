@@ -1,6 +1,7 @@
 import type { ReactNode } from "react";
 import { ArrowLeft, ArrowRight, PartyPopper } from "lucide-react";
 import { OptionButton } from "./OptionButton";
+import { QuizHelpButton, type HelpContent } from "./QuizHelpButton";
 
 export type QuizOption<T extends string> = {
   label: string;
@@ -22,7 +23,10 @@ type QuizCardProps = {
     back: string;
     next: string;
     seeResults: string;
+    openHelp: string;
+    closeHelp: string;
   };
+  helpContent: HelpContent;
 };
 
 export function QuizCard({
@@ -36,15 +40,26 @@ export function QuizCard({
   onBack,
   onNext,
   labels,
+  helpContent,
 }: QuizCardProps) {
   return (
     <section className="dream-enter sketch-card p-5 shadow-sketch sm:p-6">
-      <p className="font-body text-sm font-medium uppercase tracking-[0.24em] text-cork">
-        {eyebrow}
-      </p>
-      <h2 className="mt-2 font-sketch text-3xl font-normal leading-tight text-ivory sm:text-4xl">
-        {question}
-      </h2>
+      <div className="flex items-start justify-between gap-4">
+        <div>
+          <p className="font-body text-sm font-medium uppercase tracking-[0.24em] text-cork">
+            {eyebrow}
+          </p>
+          <h2 className="mt-2 font-sketch text-3xl font-normal leading-tight text-ivory sm:text-4xl">
+            {question}
+          </h2>
+        </div>
+
+        <QuizHelpButton
+          content={helpContent}
+          openLabel={labels.openHelp}
+          closeLabel={labels.closeHelp}
+        />
+      </div>
 
       <div className="mt-6 grid gap-3">
         {options.map((option, index) => (

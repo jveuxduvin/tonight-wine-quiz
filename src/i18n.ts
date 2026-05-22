@@ -42,6 +42,73 @@ export const ui = {
     lcboTerms: "LCBO search terms",
     searchLcbo: "Search LCBO",
     alcohol: "alcohol",
+    help: {
+      openHelp: "Explain this question",
+      closeHelp: "Close help",
+      category: {
+        title: "What does this mean?",
+        body:
+          "Choose the type of wine you want tonight. Pick red, white, rosé, sparkling, or sweet/dessert if you already know the general style you want. Choose Surprise me if you’re open to anything.",
+        items: [
+          { label: "White", description: "Fresh, crisp, fruity, or creamy white wines." },
+          { label: "Rosé", description: "Pink wines, usually refreshing and easy-drinking." },
+          { label: "Sparkling", description: "Bubbly wines like Prosecco, Cava, or Champagne." },
+          { label: "Red", description: "Red wines, from light and juicy to bold and intense." },
+          { label: "Sweet / dessert", description: "Sweeter wines, including dessert and fortified styles." },
+          { label: "Surprise me", description: "Open to anything." },
+        ],
+      },
+      vibe: {
+        title: "What do you mean by vibe?",
+        body:
+          "This is about the wine’s overall mood or personality, not strict wine rules. Pick the option that sounds most like what you want tonight.",
+        items: [
+          { label: "Crisp & refreshing", description: "Bright, zippy, lively, and easy to sip." },
+          { label: "Fruity & easy", description: "Juicy, approachable, and simple to enjoy." },
+          { label: "Smooth & cozy", description: "Soft, mellow, round, and comforting." },
+          { label: "Bold & intense", description: "Bigger flavour, more power, and more presence." },
+          {
+            label: "Weird / nerdy / interesting",
+            description: "Unusual, distinctive, quirky, mineral, funky, or conversation-worthy.",
+          },
+        ],
+      },
+      dryness: {
+        title: "What does dry mean?",
+        body:
+          "Dryness is about sweetness, not whether the wine feels harsh. A dry wine has little to no noticeable sweetness. An off-dry wine has a small touch of sweetness. A sweet wine tastes clearly sweet.",
+        items: [
+          { label: "Dry", description: "Not sweet, or barely sweet at all." },
+          { label: "Off-dry", description: "Slightly sweet." },
+          { label: "Sweet", description: "Clearly sweet." },
+          { label: "No preference", description: "Open to anything." },
+        ],
+      },
+      body: {
+        title: "What is body?",
+        body:
+          "Body is how light or heavy the wine feels in your mouth. It is more about texture and weight than flavour. Think of it like milk: light feels like skim milk, medium feels like 2% milk, and full feels richer, like whole milk or cream.",
+        items: [
+          { label: "Light", description: "Delicate, lean, and refreshing." },
+          { label: "Medium", description: "Balanced and in the middle." },
+          { label: "Full", description: "Richer, heavier, and more intense." },
+          { label: "No preference", description: "Open to anything." },
+        ],
+      },
+      crowd: {
+        title: "What is crowd mode?",
+        body:
+          "Crowd mode tells us how safe or adventurous the recommendation should be. Use it to decide whether you want something easy and familiar, balanced, or more unusual.",
+        items: [
+          { label: "Safe crowd-pleaser", description: "Easy to like, approachable, and low-risk." },
+          {
+            label: "Balanced",
+            description: "A middle-ground pick with some personality, but still approachable.",
+          },
+          { label: "Adventurous", description: "More distinctive, bold, unusual, or less obvious." },
+        ],
+      },
+    },
     traits: {
       sweetness: "Sweetness",
       acidity: "Acidity",
@@ -143,6 +210,79 @@ export const ui = {
     lcboTerms: "Mots-clés LCBO",
     searchLcbo: "Rechercher à la LCBO",
     alcohol: "alcool",
+    help: {
+      openHelp: "Expliquer cette question",
+      closeHelp: "Fermer l’aide",
+      category: {
+        title: "Qu’est-ce que ça veut dire ?",
+        body:
+          "Choisissez le type de vin dont vous avez envie ce soir. Si vous savez déjà que vous voulez un rouge, un blanc, un rosé, un mousseux ou un vin sucré/dessert, choisissez cette option. Sinon, choisissez Surprenez-moi pour laisser l’application choisir parmi tous les styles.",
+        items: [
+          { label: "Blanc", description: "Des vins blancs frais, vifs, fruités ou crémeux." },
+          { label: "Rosé", description: "Des vins roses, souvent rafraîchissants et faciles à boire." },
+          { label: "Mousseux", description: "Des vins à bulles comme le Prosecco, le Cava ou le Champagne." },
+          { label: "Rouge", description: "Des vins rouges, du léger et juteux au corsé et intense." },
+          {
+            label: "Sucré / dessert",
+            description: "Des vins plus sucrés, y compris des vins de dessert ou fortifiés.",
+          },
+          { label: "Surprenez-moi", description: "Ouvert à tous les styles." },
+        ],
+      },
+      vibe: {
+        title: "C’est quoi, le style recherché ?",
+        body:
+          "Cette question parle de la personnalité générale du vin, pas de règles techniques strictes. Choisissez l’option qui ressemble le plus à l’ambiance que vous voulez ce soir.",
+        items: [
+          { label: "Vif et rafraîchissant", description: "Lumineux, acidulé, énergique et facile à boire." },
+          { label: "Fruité et facile", description: "Juteux, accessible et simple à apprécier." },
+          { label: "Doux et réconfortant", description: "Souple, rond, moelleux et relaxant." },
+          { label: "Corsé et intense", description: "Plus puissant, plus riche, avec plus de présence." },
+          {
+            label: "Original / geek / intéressant",
+            description: "Inhabituel, distinctif, minéral, funky ou parfait pour lancer une conversation.",
+          },
+        ],
+      },
+      dryness: {
+        title: "Que veut dire sec ?",
+        body:
+          "La sécheresse parle du niveau de sucre, pas du fait que le vin soit dur ou agressif. Un vin sec a peu ou pas de sucre perceptible. Un vin légèrement sucré a une petite touche de sucre. Un vin doux goûte clairement sucré.",
+        items: [
+          { label: "Sec", description: "Pas sucré, ou à peine sucré." },
+          { label: "Légèrement sucré", description: "Un petit peu sucré." },
+          { label: "Doux", description: "Clairement sucré." },
+          { label: "Sans préférence", description: "Ouvert à tout." },
+        ],
+      },
+      body: {
+        title: "C’est quoi, le corps d’un vin ?",
+        body:
+          "Le corps, c’est la sensation de légèreté ou de richesse du vin en bouche. C’est surtout une question de texture et de poids, pas seulement de goût. Pensez au lait : léger comme du lait écrémé, moyen comme du lait 2 %, corsé comme du lait entier ou quelque chose de plus crémeux.",
+        items: [
+          { label: "Léger", description: "Délicat, fin et rafraîchissant." },
+          { label: "Moyen", description: "Équilibré, entre léger et corsé." },
+          { label: "Corsé", description: "Plus riche, plus lourd et plus intense." },
+          { label: "Sans préférence", description: "Ouvert à tout." },
+        ],
+      },
+      crowd: {
+        title: "C’est quoi, le mode groupe ?",
+        body:
+          "Le mode groupe indique si la recommandation doit être très accessible ou plus aventureuse. Utilisez-le pour choisir entre quelque chose de facile et familier, un juste milieu, ou une option plus originale.",
+        items: [
+          { label: "Valeur sûre", description: "Facile à aimer, accessible et peu risqué." },
+          {
+            label: "Équilibré",
+            description: "Un choix entre les deux : un peu de personnalité, mais encore accessible.",
+          },
+          {
+            label: "Aventureux",
+            description: "Plus distinctif, plus audacieux, plus original ou moins évident.",
+          },
+        ],
+      },
+    },
     traits: {
       sweetness: "Douceur",
       acidity: "Acidité",
