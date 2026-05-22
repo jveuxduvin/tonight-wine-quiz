@@ -45,7 +45,7 @@ function sweetnessPreferenceScore(wine: Wine, dryness: DrynessPreference): numbe
     score -= 4;
   }
 
-  if (dryness === "offDry" && wine.sweetness >= 2 && wine.sweetness <= 4) {
+  if (dryness === "offDry" && wine.sweetness >= 2 && wine.sweetness <= 3) {
     score += 1.5;
   }
 
@@ -93,11 +93,11 @@ export function scoreWine(wine: Wine, answers: Required<QuizAnswers>): ScoredWin
 
   score += crowdScore(wine.adventurousness, answers.crowd);
 
-  if (answers.vibe === "crisp" && wine.acidity >= 4) {
+  if (answers.vibe === "crisp" && wine.acidity >= 4 && wine.body <= 3) {
     score += 1.5;
   }
 
-  if (answers.crowd === "safe" && wine.tannin <= 1) {
+  if (answers.crowd === "safe" && wine.tannin <= 2) {
     score += 1;
   }
 
@@ -126,6 +126,39 @@ export function getTopWineRecommendations(
 
   return eligibleWines
     .map((wine) => scoreWine(wine, answers))
-    .sort((a, b) => b.score - a.score || a.name.localeCompare(b.name))
+    .sort((a, b) => {
+      if (b.score !== a.score) {
+        return b.score - a.score;
+      }
+
+      const aVibeMatch = a.vibes.includes(answers.vibe) ? 1 : 0;
+      const bVibeMatch = b.vibes.includes(answers.vibe) ? 1 : 0;
+
+      if (bVibeMatch !== aVibeMatch) {
+        return bVibeMatch - aVibeMatch;
+      }
+
+      if (answers.dryness !== "none") {
+        const targetSweetness = sweetnessTargets[answers.dryness];
+        const aSweetnessDistance = Math.abs(a.sweetness - targetSweetness);
+        const bSweetnessDistance = Math.abs(b.sweetness - targetSweetness);
+
+        if (aSweetnessDistance !== bSweetnessDistance) {
+          return aSweetnessDistance - bSweetnessDistance;
+        }
+      }
+
+      if (answers.body !== "none") {
+        const targetBody = bodyTargets[answers.body];
+        const aBodyDistance = Math.abs(a.body - targetBody);
+        const bBodyDistance = Math.abs(b.body - targetBody);
+
+        if (aBodyDistance !== bBodyDistance) {
+          return aBodyDistance - bBodyDistance;
+        }
+      }
+
+      return a.name.localeCompare(b.name);
+    })
     .slice(0, limit);
 }
